@@ -1,0 +1,48 @@
+@use'base/variables' as v;
+
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+box-sizing: inherit;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: v.$fuente-principal;
+    background-color: v.$principal;
+    font-size: 1.6rem;
+
+}
+
+p {
+    font-size: 2rem;
+    color: v.$blanco;
+}
+
+h1,h2,h3,h4 {
+    color: v.$blanco;
+    margin: 0 0 5rem 0;
+}
+h1 {
+    font-size: 4rem;
+}
+h2 {
+    font-size: 3rem;
+}
+h3 {
+    font-size: 2rem;
+}
+a {
+    text-decoration: none;
+}
+img {
+    // max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
+}

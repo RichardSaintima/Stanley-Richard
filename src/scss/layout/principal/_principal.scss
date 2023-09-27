@@ -1,0 +1,58 @@
+@use'base/variables' as v;
+@use'base/mixins' as m;
+
+.imagen {
+   position: relative;
+   max-height: 60rem;
+   height: min(95%,60rem);
+   overflow: hidden; 
+   .overlay {
+    position: absolute;
+    background-color: v.$principal-claro;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    place-items: center;
+    &:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    }
+    img {
+        border-radius: 50%;
+        width: 5rem;
+        margin: 0 auto; 
+        object-fit: cover;
+    }
+
+    
+   }
+
+}
+
+.contenido-imagen {
+    @include m.contenedor-sm;
+    margin: 1.5rem;
+    position: relative;
+            text-align: center;
+        h2 {
+            margin: auto;        
+        }
+        p {
+            font-size: 1.6rem;
+        }  
+    @include m.tablet {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: v.$principal-claro;
+        padding: 2.5rem 1rem;
+        transform: translate(-50%, -50%);
+      
+    }
+
+
+}

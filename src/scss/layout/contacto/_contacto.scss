@@ -1,0 +1,12 @@
+@use'base/variables' as v;
+@use'base/mixins' as m;
+
+.contacto {
+    background-color: v.$principal-claro;
+
+}
+
+.forma-contacto {
+    @include m.contenedor;
+
+}

@@ -1,0 +1,86 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+
+/* Estilos para el encabezado en estado normal */
+.header {
+    @include m.contenedor;
+
+    &__titulo {
+        @include m.tablet {
+            display: block;
+            @include m.heading;
+            @include m.texto-fluido(1rem, 2.5rem);
+            white-space: nowrap; 
+            text-align: center;       
+        }
+        display: none;
+    }
+
+    &__titulo2 {
+        @include m.tablet {
+            display: none;       
+        }
+        display: block;
+        @include m.heading;
+        @include m.texto-fluido(1rem, 2.5rem);
+        white-space: nowrap; 
+    }
+
+    &__contenido {
+        &--header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    
+    &__navegacion {
+        
+        &--principal {
+            display: none;
+            @include m.tablet {
+                display: flex;
+                align-items: center;
+                top: 0;
+                right: 0;
+                padding: 1rem;
+            }
+        }
+        &--enlace {
+            @include m.tablet {
+                text-transform: uppercase;
+                font-weight: v.$black;
+                color: v.$verde;
+                font-size: 2.4rem;
+                padding: 1rem;
+                @include m.texto-fluido(1rem, 2.3rem);
+                &:hover {
+                    background-color: v.$principal-claro;
+                    color: v.$verde-claro;
+                }
+            }
+        }
+        &--enlace {
+            @include m.tablet {
+                text-transform: uppercase;
+                font-weight: v.$black;
+                color: v.$verde;
+                font-size: 2.4rem;
+                padding: 1rem;
+                @include m.texto-fluido(1rem, 2.3rem);
+                &:hover {
+                    background-color: v.$principal-claro;
+                    color: v.$verde-claro;
+                }
+            }
+        }
+
+
+    }
+}
+
+
+
+

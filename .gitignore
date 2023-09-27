@@ -1,0 +1,6 @@
+MiPortafolio/
+node_modules/
+vendor/
+.vscode/
+.DS_store
+.env

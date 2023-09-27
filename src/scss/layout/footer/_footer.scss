@@ -1,0 +1,39 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.footer {
+    background-color: v.$negro;
+    margin-top: 5rem;
+    padding-top: 3rem;
+    color: v.$blanco;
+
+    &__grid {
+        @include m.contenedor;
+    }
+
+    &__texto {
+        line-height: 2;
+        text-align: center;
+        @include m.tablet {
+            text-align: left;
+        }
+    }
+
+    &__copyright {
+        background-color: darken(v.$principal, 10);
+        margin: 0;
+        padding: 2rem 0;
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: v.$black;
+
+        &--formulario {
+            margin: 0 auto;
+            
+            padding: 1rem;
+        }
+        &--regular {
+            font-weight: v.$regular;
+        }
+    }
+}
