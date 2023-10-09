@@ -1,0 +1,50 @@
+@use'base/variables' as v;
+@use'base/mixins' as m;
+
+.sobreMi {
+    &__contenido {
+        // @include m.grid(1, 1rem);
+        @include m.tablet {
+            display: grid;
+            grid-template-columns: 30% 70%;
+            gap: 1.2rem;
+        }        
+    
+        &--imagen {
+            picture {
+                source,img {
+                    border-radius: 50%;
+                    max-width:100%;
+                }
+            }
+        }
+    
+        p {
+            @include m.contenedor-md;
+            @include m.texto-fluido(1rem, 2rem);
+            color: v.$blanco;
+            font-weight: v.$delgada;
+            text-align: justify;
+            line-height: 1.5;
+            span {
+                color: v.$verde;
+                font-weight: v.$bold;
+            }
+        }
+    
+        &--lista {
+            @include m.contenedor-md;
+            ul {
+                @include m.tags(v.$verde-claro);
+            }
+        }
+    }
+} 
+        // ul {
+        //     text-decoration: double;
+        //     list-style: square;
+        //     color: v.$blanco;
+        //     font-weight: v.$delgada;
+        //     @include m.texto-fluido(1rem, 2rem);
+        // }
+    

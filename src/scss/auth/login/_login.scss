@@ -1,0 +1,44 @@
+@use'base/variables' as v;
+@use'base/mixins' as m;
+
+.login {
+    margin-top: 5rem;
+    @include m.contenedor-sm;
+    height: 100vh;
+
+    input[type="submit"] {
+        @include m.boton(v.$verde, v.$blanco)
+    }
+
+    &__descripcion-pagina {
+        @include m.texto-fluido(1.6rem, 3rem);
+        text-align: center;
+        font-weight: v.$black;
+        margin: 5rem;
+
+    }
+
+    &__formulario {
+        margin-top: 5rem;
+    
+        &--campo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            
+            label {
+                flex: 0 0 10rem; 
+                color: v.$verde-claro;           
+            }
+    
+            input {
+                flex: 1;
+                padding: 1rem;
+                border: none;
+                background-color: lighten(v.$principal-claro, 43%);
+            }
+        }
+    
+    }
+
+}

@@ -1,0 +1,20 @@
+@use'base/variables' as v;
+@use'base/mixins' as m;
+
+.error {
+    @include m.contenedor-md;
+    @include m.texto-fluido(1rem, 4rem);
+    text-align: center;
+    &__titulo {
+        
+        @include m.nombre-pagina;
+    }
+
+    &__descripcion {
+        @include m.descripcion-pagina
+    }
+
+    a {
+        color: v.$azul;
+    }
+}

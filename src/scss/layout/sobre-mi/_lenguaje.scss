@@ -1,0 +1,42 @@
+@use'base/variables' as v;
+@use'base/mixins' as m;
+
+.sobreMi {
+    
+    &__lenguajes {
+        @include m.contenedor-md;
+        display: flex;
+        flex-direction: column;
+        @include m.tablet{
+            flex-direction: row;
+        }
+        justify-content: space-between;
+        text-align: left;
+
+        .nivel {
+            color: v.$verde;
+            font-weight: v.$bold;
+        }
+        .cantidad {
+            font-size: 1.5rem;
+        }
+        .lenguaje {
+            @include m.texto-fluido(.9rem, 1.5rem);
+            font-weight: v.$black;
+            text-transform: uppercase;
+            border-bottom: 0.1rem solid v.$principal-claro;
+            margin: 1rem;
+        }
+
+        &--nivel {
+            flex: 1;
+            text-align: center;
+            gap: 5rem;
+            @include m.texto-fluido(.5rem, 1.3rem);
+            font-weight: v.$delgada;
+            text-transform: uppercase;
+            border-bottom: 0.1rem solid v.$principal-claro;
+            margin-top: 1rem;
+        }
+    }
+}

@@ -1,0 +1,100 @@
+
+<fieldset class="formulario__fieldset">
+    <legend class="formulario__legend">Nombre y Escuela</legend>
+
+    <div class="formulario__campo">
+        <label for="nombre" class="formulario__label">Nombre Portafolio</label>
+        <input
+            type="text"
+            class="formulario__input"
+            id="nombre"
+            name="nombre"
+            placeholder="Nombre Portafolio"
+            value="{{ portafolio.titulo }}"
+        >
+    </div>
+
+    <div class="formulario__campo">
+        <label for="imagen" class="formulario__label">Imagen del Portafolio</label>
+        <div class="formulario__campo">
+            <input
+                type="file"
+                class="formulario__input formulario__input--file"
+                id="imagen"
+                name="imagen"
+                onchange="mostrarImagen(this)"
+                accept="image/jpeg, image/png"
+            >
+        </div>
+        <div id="imagenSeleccionada" class="formulario__imagen-seleccionada">
+            {% if portafolio.imagen_portafolio %}
+                <img src="{{ portafolio.imagen_portafolio.url }}" alt="Imagen del Certificado">
+            {% endif %}
+        </div>
+    </div>    
+</fieldset>
+
+<fieldset class="formulario__fieldset">
+    <div class="formulario__campo">
+        <label for="descripcion" class="formulario__label">Descripción</label>
+        <textarea
+            class="formulario__input"
+            id="descripcion"
+            name="descripcion"
+            placeholder="Descripción Portafolio"
+            rows="8"
+        >{{ portafolio.descripcion }}</textarea>
+    </div>
+</fieldset>
+
+<fieldset class="formulario__fieldset">
+    <legend class="formulario__legend">Información Extra</legend>
+
+    <div class="formulario__campo">
+        <label for="tags_input" class="formulario__label">Aptitude Adquirido (separadas por coma)</label>
+        <input
+            type="text"
+            class="formulario__input"
+            id="tags_input"
+            placeholder="Ej. Node.js, PHP, CSS, Laravel, UX / UI"
+        >
+
+        <div id="tags" class="formulario__listado"></div>
+        <input type="hidden" name="tags" value="{{ portafolio.aptitudes }}">
+    </div>
+</fieldset>
+
+<fieldset class="formulario__fieldset">
+    <legend class="formulario__legend">Enlaces</legend>
+
+    <div class="formulario__campo">
+        <div class="formulario__contenedor-icono">
+            <div class="formulario__icono">
+                <i class="fa-brands fa-github"></i>
+            </div>
+            <input
+                type="text"
+                class="formulario__input--sociales"
+                name="enlaces[]"
+                placeholder="GitHub"
+                value="{{ portafolio.rutas_enlaces }}"
+            >
+        </div>
+    </div>
+
+    <div class="formulario__campo">
+        <div class="formulario__contenedor-icono">
+            <div class="formulario__icono">
+                <i class="fa-solid fa-code"></i>
+            </div>
+            <input
+                type="text"
+                class="formulario__input--sociales"
+                name="enlaces[]"
+                placeholder="Silio Web"
+                value="{{ portafolio.rutas_enlaces }}"
+            >
+        </div>
+    </div>
+</fieldset>
+{% include "../../layout-admin/mostrar-imagen.html" %}

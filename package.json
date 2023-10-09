@@ -4,7 +4,7 @@
   "description": "Mi Portsfolio Web con sass Npm ",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch src/scss:build/css",
+    "sass": "sass --watch src/scss:static/css",
     "tarea": "gulp tarea",
     "dev": "gulp dev"
   },

@@ -1,0 +1,45 @@
+@use'base/variables' as v;
+@use'base/mixins' as m;
+
+.sobreMi {
+     &__certificado {
+        // display: flex;
+        @include m.grid(1, 1rem);
+        @include m.tablet {
+            @include m.grid(3 , 1rem);
+        }
+
+        &--tipo {            
+            &--nombre {
+                @include m.texto-fluido(.6rem, 1.5rem);
+                text-align: center;
+                font-weight: v.$black;
+                margin-top: 0;
+            }
+            &__escuela {
+                @include m.texto-fluido(.6rem, 1.2rem);
+                text-align: center;
+            }
+            @include m.card;
+            @include m.contenedor-md;
+            ul {
+                @include m.tags(v.$verde-claro, 1rem);
+            }
+
+            &__aptitudes {
+                @include m.texto-fluido(.6rem, 1.2rem);
+                font-weight: v.$black;
+            }
+            &__ver {
+                @include m.texto-fluido(.6rem, 1.2rem);
+                font-weight: v.$black;
+                background-color: transparent;
+                padding: .8rem;
+                border: none;
+                a,i {
+                    color: v.$blanco;  
+                }
+            }
+        }
+     }
+}

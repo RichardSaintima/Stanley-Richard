@@ -1,0 +1,35 @@
+@use'base/variables' as v;
+@use'base/mixins' as m;
+
+.sobreMi {
+    
+    &__gusto {
+        @include m.contenedor;
+
+        @include m.tablet {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        &--tipo {
+            display: flex;
+            flex-direction: column;
+            @include m.texto-fluido(1rem, 2rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            border-bottom: 0.2rem solid v.$principal-claro;
+
+            p {
+                text-align: center;
+            }
+            ul {
+                margin-top: 1rem;
+                li {
+                    padding: .5rem;
+                }
+            }
+
+        }
+    }
+}

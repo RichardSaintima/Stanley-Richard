@@ -1,0 +1,24 @@
+@use'base/variables' as v;
+@use'base/mixins' as m;
+
+.header {
+    // background-color: v.$color-primario;
+    // color: v.$color-blanco;
+    // padding: 1rem;
+    // text-align: center;
+    // @include m.responsive('tablet') {
+    //     padding: 2rem;
+    // }
+    // @include m.responsive('desktop') {
+    //     padding: 3rem;
+    // }
+
+    &.fijo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+        box-shadow: .3rem .3rem .3rem v.$principal-claro;
+    }
+}

@@ -17,6 +17,13 @@ body {
     background-color: v.$principal;
     font-size: 1.6rem;
 
+    &.no-scroll {
+        overflow: hidden;
+    }
+    &.body-scroll {
+        padding-top: 63px ;
+    }
+
 }
 
 p {

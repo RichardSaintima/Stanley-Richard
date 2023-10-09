@@ -1,0 +1,139 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.dashboard {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: v.$principal-claro;
+    overflow: hidden;
+
+    &__header {
+        background-color: v.$negro;
+        padding: 2rem;
+    }
+
+    
+    &__titulo {
+        @include m.contenedor-md;
+        padding: 2rem;
+        text-align: center;
+        @include m.texto-fluido(2rem, 3rem);
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: v.$verde;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+    }
+    &__header-grid {
+        display: flex;
+        flex-direction: column;
+        @include m.tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+    &__logo {
+        @include m.logo;
+        @include m.texto-fluido(2rem, 3rem);
+    }
+
+    // &__nav {
+
+    // }
+
+    &__form {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__submit--logout {
+        @include m.enlace;
+    }
+
+    &__grid {
+        display: flex;
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    &__sidebar {
+        background-color: lighten(v.$principal, 10);
+        // width: 12rem;
+    }
+
+    &__menu {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    &__enlace {
+        color: v.$verde;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        transition: 300ms background-color ease-in-out, 300ms color ease, 300ms border-radius ease;
+
+        &:hover,
+        &--actual {
+            background-color: darken(v.$verde-claro, 20);
+            color: v.$blanco;
+            border-radius: 1rem;
+        }
+    }
+    &__icono {
+        font-size: 2rem;
+    }
+    &__menu-texto {
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        font-weight: v.$bold;
+        margin-top: .5rem;
+    }
+
+    &__contenido {
+        width: 100%;
+        padding: 1rem 1rem 5rem 1rem;
+        overflow-y: scroll;
+        height: 100vh;
+        @include m.tablet {
+            padding: 1rem 5rem 7rem 5rem;
+        }
+    }
+
+    &__contenedor-boton {
+        @include m.tablet {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 5rem;
+        }
+    }
+    &__boton {
+        @include m.boton(v.$verde-claro, v.$blanco);
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        @include m.tablet {
+            width: auto;
+        }
+    }
+
+    &__contenedor {
+        @include m.shadow;
+        background-color: v.$blanco;
+        padding: 2rem;
+        border-radius: 1rem;
+        margin-top: 5rem;
+    }
+
+    &__formulario {
+        @extend .dashboard__contenedor;
+        @include m.contenedor-md;
+    }
+
+    &__grafica {
+        @include m.contenedor-sm;
+    }
+}

@@ -1,0 +1,36 @@
+{% extends "../../base/base.html" %}
+{% load static %} 
+{%block title%} Nosotros  {%endblock%}
+
+{% block content%}
+ 
+<div class="login">
+    <p class="login__descripcion-pagina">Iniciar Sesión</p>
+    {% include '../components/alertas.html' %} 
+    
+    <form method="post" action="{% url 'login' %}" class="login__formulario" novalidate>
+        
+        {% csrf_token %}
+
+        <div class="login__formulario--campo">
+            <label for="nombre_usuario">Nombre de usuario</label>
+            <input type="text" id="nombre_usuario" name="nombre_usuario" placeholder="Tu nombre de usuario">
+        </div>
+
+        <div class="login__formulario--campo">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Tu Password">
+        </div>
+
+        <input type="submit" class="boton" value="Iniciar Sesión">
+    </form>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+
+    $("#idMensajes").delay(5000).fadeOut("slow");
+
+    });
+</script>
+{%endblock%}

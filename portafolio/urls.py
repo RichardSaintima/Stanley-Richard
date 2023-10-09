@@ -20,9 +20,11 @@ from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.conf.urls import handler404
+handler404 = 'proyecto.views.sorry'
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('', include('proyecto.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

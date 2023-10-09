@@ -1,0 +1,35 @@
+@use'base/variables' as v;
+@use'base/mixins' as m;
+
+
+.hobby {
+    @include m.contenedor;
+    @include m.texto-fluido(.5rem, 3rem);
+
+    &__titulo {
+        @include m.contenedor-md;
+        padding: 2rem;
+        text-align: center;
+        @include m.texto-fluido(1rem, 2rem);
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: v.$verde;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        border-bottom: 0.1rem solid v.$verde;
+        margin-top: 2rem;
+    }
+
+    &__subtitulo {
+        @include m.contenedor-md;
+        padding: 2rem;
+        @include m.texto-fluido(1rem, 2rem);
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: v.$verde;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        border-bottom: 0.1rem solid v.$verde;
+        margin-top: 2rem;
+    }
+}
