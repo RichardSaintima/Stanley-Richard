@@ -1,54 +1,74 @@
+import Swal from 'sweetalert2'
 (function() {
-    const tagsInput = document.querySelector('#tags_input');
-    const tagsDiv = document.querySelector('#tags');
+    var items = document.querySelectorAll('#tags li');
 
-    if(tagsInput) {
+    function handleClick(event) {
+        var aptitudId = event.target.dataset.aptitudId;
+        document.getElementById('nombre').value = event.target.innerText;
+        document.getElementById('aptitud_id').value = aptitudId;
+    }
     
-        const tagsDiv = document.querySelector('#tags');
-        const tagsInputHidden = document.querySelector('[name="tags"]');
-    
-        let tags = [];
-    
-        // Recuperar del input oculto
-        if(tagsInputHidden.value !== '') {
-            tags = tagsInputHidden.value.split(',');
-            mostrarTags();
-        }
-    
-        tagsInput.addEventListener('keypress', guardarTag)
-    
-        function guardarTag(e) {
-            if(e.keyCode === 44) {
-                if(e.target.value.trim() === '' || e.target.value < 1) { 
-                    return
+    for (var i = 0; i < items.length; i++) {
+        items[i].addEventListener('click', handleClick);
+    }
+
+    function handleDoubleClick(event) {
+        Swal.fire({
+            title: 'Estás seguro',
+            text: '¿Quieres borrar esta aptitud?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, borrar',
+            cancelButtonText: 'No, cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var aptitudId = event.target.dataset.aptitudId;
+                eliminarAptitud(aptitudId, event.target);
+            }
+        });
+    }
+
+    for (var i = 0; i < items.length; i++) {
+        items[i].addEventListener('dblclick', handleDoubleClick);
+    }
+
+    function eliminarAptitud(aptitudId, elemento) {
+        fetch('/stanley/eliminar_aptitud/' + aptitudId, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken')
+            }
+        }).then(response => response.json()).then(data => {
+            if (data.success) {
+                elemento.remove();
+                Swal.fire(
+                    '¡Eliminado!',
+                    'La aptitud ha sido eliminada.',
+                    'success'
+                );
+            } else {
+                Swal.fire(
+                    'Error',
+                    data.error_message,
+                    'error'
+                );
+            }
+        });
+    }
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === name + '=') {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
                 }
-                e.preventDefault();
-                tags = [...tags, e.target.value.trim()];
-                tagsInput.value = '';
-                mostrarTags();
             }
         }
-    
-        function mostrarTags() {
-            tagsDiv.textContent = '';
-            tags.forEach(tag => {
-                const etiqueta = document.createElement('LI');
-                etiqueta.classList.add('formulario__tag')
-                etiqueta.textContent = tag;
-                etiqueta.ondblclick = eliminarTag
-                tagsDiv.appendChild(etiqueta)
-            })
-            actualizarInputHidden();
-        }   
-    
-        function eliminarTag(e) {
-            e.target.remove()
-            tags = tags.filter(tag => tag !== e.target.textContent)
-            actualizarInputHidden();
-        }
-    
-        function actualizarInputHidden() {
-           tagsInputHidden.value = tags.toString();
-        }
+        return cookieValue;
     }
+
 })();

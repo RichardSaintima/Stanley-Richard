@@ -13,8 +13,9 @@
         &--imagen {
             picture {
                 source,img {
-                    border-radius: 50%;
+                    border-radius: 2rem;
                     max-width:100%;
+                    // height: none;
                 }
             }
         }

@@ -1,0 +1,40 @@
+{% load static %} 
+<h1 class="proyecto__subtitulo">Proyecto Pendiente</h1>
+{% if portafolios_pendientes %}
+<div class="proyecto__finalizado">
+        {% for portafolio in portafolios_pendientes %}
+        <div class="proyecto__finalizado--tipo">
+            <p class="proyecto__finalizado--tipo--estado">Estado: <span>{{ portafolio.id_estado.nombre }}</span></p>
+            <p class="proyecto__finalizado--tipo--nombre">{{ portafolio.titulo }}</p>
+            <!-- Agrega el código para mostrar la imagen -->
+            <picture>
+                <source srcset="{{portafolio.imagen_portafolio.url}}" type="image/avif" alt="Imagen Portafolio">
+                <source srcset="{{portafolio.imagen_portafolio.url}}" type="image/webp" alt="Imagen Portafolio">
+                <img loading="lazy" width="200" height="300" srcset="{{portafolio.imagen_portafolio.url}}" type="image/jpeg" alt="Imagen Portafolio">
+            </picture>
+            <p class="proyecto__finalizado--tipo__descipcion miParrafo" >
+                {{ portafolio.descripcion }}
+            </p>
+            <p id="verMas" class="proyecto__finalizado--tipo__descipcion--boton">Leer Descripcion</p>
+
+            <p class="proyecto__finalizado--tipo__aptitudes">Programador con:</p>
+            <ul>
+                {% for aptitud in portafolio.aptitudes.all %}
+                    <li>{{ aptitud.nombre }}</li>
+                {% endfor %}
+            </ul>
+            <button class="proyecto__finalizado--tipo__ver">
+                {% if portafolio.enlaces_web %}
+                <a href="{{ portafolio.enlaces_web }}">Ver Pagina</a>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                {% elif portafolio.enlaces_github %}                
+                <a href="{{ portafolio.enlaces_web }}">Mostrar Github</a>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                {% endif %}                                
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+<p class="proyecto__estados">No hay proyectos Pendientes en este momento.</p>
+{% endif %}

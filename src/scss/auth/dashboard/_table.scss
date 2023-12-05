@@ -30,6 +30,36 @@
             max-width: 30rem;
             
         }
+        &--enlaces {
+            font-weight: v.$bold;
+            @include m.texto-fluido(.5rem, 1.5rem);
+        }
+
+        &--aptitude {
+        //     position: relative;
+            cursor: pointer;
+            padding-left: 4rem;
+            color: v.$principal;
+            @include m.texto-fluido(1.3rem, 2rem);
+        //     &::before {
+        //         content: attr(title);
+        //         position: absolute;
+        //         background-color: v.$principal; /* Puedes personalizar el color de fondo según tu diseño */
+        //         color: v.$blanco; /* Personaliza el color del texto según tu diseño */
+        //         padding: 5px;
+        //         border-radius: 5px;
+        //         font-size: 14px;
+        //         white-space: nowrap;
+        //         display: none;
+        //         z-index: 1;
+        //         bottom: 100%; /* Muestra el tooltip encima de la celda */
+        //         left: 50%;
+        //         transform: translateX(-50%);
+        //     }
+        //     &:hover::before {
+        //         display: block;
+        //     }
+        }
 
         &--acciones {
             @extend .table__td;

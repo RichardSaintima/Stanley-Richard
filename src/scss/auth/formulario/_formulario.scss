@@ -4,11 +4,13 @@
 .formulario {
     display: flex;
     flex-direction: column;
+
     &__fieldset {
         border: none;
         margin-top: 1rem;
         padding: 0;
     }
+
     &__legend {
         color: v.$verde;
         font-size: 2.2rem;
@@ -21,11 +23,13 @@
         gap: 1rem;
         margin: 1.5rem 0;
     }
+
     &__contenedor-icono {
         display: flex;
         border-radius: .5rem;
         overflow: hidden;
     }
+
     &__icono {
         background-color: v.$verde-claro;
         width: 4rem;
@@ -38,12 +42,14 @@
             font-size: 2rem;
         }
     }
+
     &__label {
         display: block;
         font-size: 1.8rem;
         font-weight: v.$bold;
         color: rgba(v.$negro, .8);
     }
+
     &__input,
     &__select {
         padding: 1rem;
@@ -53,19 +59,21 @@
         &--file {
             border: none;
         }
+
         &--sociales {
             @extend .formulario__input;
             flex: 1;
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
         }
+
         &--option {
             padding: 3rem;
-            color:  darken(v.$verde, 20);
+            color: darken(v.$verde, 20);
         }
     }
 
-    &__radio{
+    &__radio {
         display: flex;
         gap: 2rem;
     }
@@ -73,9 +81,11 @@
     &__texto {
         margin-top: 3rem;
     }
+
     &__imagen {
         max-width: 20rem;
     }
+
     &__imagen-seleccionada {
         max-width: 10rem;
     }
@@ -94,4 +104,52 @@
             width: 100%;
         }
     }
-}
+
+    .custom-select {
+        position: relative;
+        display: inline-block;
+    
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+    
+            li {
+                margin-bottom: 5px;
+                flex: 0 0 50%; 
+    
+                input[type="checkbox"] {
+                    display: none;
+                }
+    
+                label {
+                    position: relative;
+                    padding-left: 30px;
+                    cursor: pointer;
+                    display: inline-block;
+    
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 20px;
+                        height: 20px;
+                        border: 2px solid #000;
+                        background-color: #fff;
+                        border-radius: 4px;
+                    }
+                }
+    
+                input[type="checkbox"]:checked + label:before {
+                    content: "\2713";
+                    text-align: center;
+                    line-height: 20px;
+                    color: #a1149a; 
+                }
+            }
+        }
+    }
+}    

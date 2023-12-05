@@ -2,34 +2,13 @@
     <p class="footer__contacto">Contactos</p>
     <div  class="footer__grid">    
         <nav class="menu-redes"> 
-            <a class="menu-redes__enlace" rel="noopener noreferrer" target="_blank" href="facebook.com/stanley.saintima.3">
-                <span class="menu-redes__ocultar">Facebook</span>
-                <input type="hidden" value="facebook">
-            </a> 
-            <a class="menu-redes__enlace" rel="noopener noreferrer" target="_blank" href="https://twitter.com">
-                <span class="menu-redes__ocultar">Twitter</span>
-                <input type="hidden" value="twitter">
-            </a> 
-            <a class="menu-redes__enlace" rel="noopener noreferrer" target="_blank" href="https://www.youtube.com/@stanleyrichardsaintima6375">
-                <span class="menu-redes__ocultar">YouTube</span>
-                <input type="hidden" value="youTube">
-            </a> 
-            <a class="menu-redes__enlace" rel="noopener noreferrer" target="_blank" href="https://www.instagram.com/stanleyriche1/">
-                <span class="menu-redes__ocultar">Instagram</span>
-                <input type="hidden" value="instagram">
-            </a> 
-            <a class="menu-redes__enlace" rel="noopener noreferrer" target="_blank" href="https://tiktok.com">
-                <span class="menu-redes__ocultar">Tiktok</span>
-                <input type="hidden" value="tiktok">
-            </a> 
-            <a class="menu-redes__enlace" rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/in/stanley-richard-saintima-b45433289/">
-                <span class="menu-redes__ocultar">Linkedin</span>
-                <input type="hidden" value="linkedin">
-            </a>
-            <a class="menu-redes__enlace" rel="noopener noreferrer" target="_blank" href="https://github.com/RichardSaintima">
-                <span class="menu-redes__ocultar">Github</span>
-                <input type="hidden" value="github">
-            </a>
+            {% for red_social in redes_sociales %}
+                <a class="menu-redes__enlace" rel="noopener noreferrer" target="_blank" href="{{ red_social.url }}">
+                    <span class="menu-redes__ocultar">{{ red_social.nombre }}</span>
+                    <input type="hidden" value="{{ red_social.nombre|lower }}">
+                </a>
+            {% endfor %}
+            
         </nav>
     </div>
 

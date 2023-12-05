@@ -8,18 +8,23 @@
 <section id="inicio" class="inicio">
     <div class="inicio__imagen">
         <div class="inicio__imagen--overlay">
-            <picture>
-                <source srcset="{% static 'img/captura.avif' %}" type="image/avif" alt="Imagen perfil">
-                <source srcset="{% static 'img/captura.webp' %}" type="image/webp" alt="Imagen perfil">
-                <img loading="lazy" width="200" height="300" srcset="{% static 'img/captura.png' %}" type="image/jpeg" alt="Imagen perfil">
-            </picture>
+            {% if persona.perfil %}
+                <picture>
+                    <source srcset="{{persona.perfil.url}}" type="image/avif" alt="Imagen perfil">
+                    <source srcset="{{persona.perfil.url}}" type="image/webp" alt="Imagen perfil">
+                    <img loading="lazy" width="300" height="400" srcset="{{persona.perfil.url}}" type="image/jpeg" alt="Imagen perfil">
+                </picture>
+            {% else %}
+                <picture>
+                    <source srcset="{% static 'img/captura.avif' %}" type="image/avif" alt="Imagen perfil">
+                    <source srcset="{% static 'img/captura.webp' %}" type="image/webp" alt="Imagen perfil">
+                    <img loading="lazy" width="300" height="400" srcset="{% static 'img/captura.png' %}" type="image/jpeg" alt="Imagen perfil">
+                </picture>
+            {% endif %}
             
             <h2>Stanley Richard</h2>
-            <p>Mi enfoque y dedicación hacia el mundo de la tecnología me han permitido descubrir una pasión  por la programación y el desarrollo de software.
-                    r
-                Mi enfoque y dedicación hacia el mundo de la tecnología me han permitido descubrir una pasión  por la programación y el desarrollo de software.
-                    
-                Mi enfoque y dedicación hacia el mundo de la tecnología me han permitido descubrir una pasión  por la programación y el desarrollo de software.
+            <p>
+               {{ sobremi.descripcion_inicio }}
             </p>
             <button class="inicio__imagen--overlay--cv">
                 <i class="fa-solid fa-file-arrow-down"></i>

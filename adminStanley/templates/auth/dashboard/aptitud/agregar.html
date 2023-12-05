@@ -1,0 +1,40 @@
+{% extends "../../bases-admin/base-admin.html" %}
+{% load static %} 
+
+{% block content%}
+
+<h1 class="dashboard__titulo">{{ titulo }}</h1>
+
+<main class="dashboard__formulario">
+    {% include '../../components/alertas.html' %} 
+    
+    <form method="POST"  class="formulario">
+        {% csrf_token %}
+
+        <fieldset class="formulario__fieldset">
+            <legend class="formulario__legend">Información Aptitudes</legend>
+        
+            <div class="formulario__campo">
+                <label for="nombre" class="formulario__label">Aptitude Adquirido</label>
+                <input
+                    type="text"
+                    class="formulario__input"
+                    name="nombre"
+                    id="nombre"
+                    placeholder="Ej. Node.js, PHP, CSS, Laravel, UX / UI"
+                >
+                <input type="hidden" name="aptitud_id" id="aptitud_id">
+            </div>    
+        </fieldset>
+
+        <input class="formulario__submit formulario__submit--registrar" type="submit" value="Guardar Aptitude">
+
+        <div id="tags" class="formulario__listado">
+            {% for aptitud in aptitudes.all %}
+            <li data-aptitud-id="{{ aptitud.id_aptitude }}">{{ aptitud.nombre }}</li> 
+            {% endfor %}
+        </div>
+        
+    </form>    
+</main>   
+{%endblock%}

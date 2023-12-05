@@ -19,14 +19,15 @@ from django.urls import include, path
 
 from django.conf import settings
 from django.conf.urls.static import static
-
 from django.conf.urls import handler404
-handler404 = 'proyecto.views.sorry'
+from proyecto.views.views import sorry
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('proyecto.urls')),
+    path('stanley/', include('adminStanley.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+handler404 = sorry
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -3,10 +3,9 @@
 
 .sobreMi {
      &__certificado {
-        // display: flex;
         @include m.grid(1, 1rem);
         @include m.tablet {
-            @include m.grid(3 , 1rem);
+            @include m.grid(4 , 1rem);
         }
 
         &--tipo {            

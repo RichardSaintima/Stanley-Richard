@@ -1,0 +1,115 @@
+
+<fieldset class="formulario__fieldset">
+    <legend class="formulario__legend">Nombre y Escuela</legend>
+
+    <div class="formulario__campo">
+        <label for="nombre" class="formulario__label">Nombre Portafolio</label>
+        <input
+            type="text"
+            class="formulario__input"
+            id="nombre"
+            name="nombre"
+            placeholder="Nombre Portafolio"
+            value="{{ portafolio.titulo }}"
+        >
+    </div>
+
+    <div class="formulario__campo">
+        <label for="imagen" class="formulario__label">Imagen del Portafolio</label>
+        <div class="formulario__campo">
+            <input
+                type="file"
+                class="formulario__input formulario__input--file"
+                id="imagen"
+                name="imagen"
+                onchange="mostrarImagen(this)"
+                accept="image/jpeg, image/png"
+            >
+        </div>
+        <div id="imagenSeleccionada" class="formulario__imagen-seleccionada">
+            {% if portafolio.imagen_portafolio %}
+                <img src="{{ portafolio.imagen_portafolio.url }}" alt="Imagen del Portafolio">
+            {% endif %}
+        </div>
+    </div>    
+</fieldset>
+
+<fieldset class="formulario__fieldset">
+    <div class="formulario__campo">
+        <label for="descripcion" class="formulario__label">Descripción</label>
+        <textarea
+            class="formulario__input"
+            id="descripcion"
+            name="descripcion"
+            placeholder="Descripción Portafolio"
+            rows="8"
+        >{{ portafolio.descripcion }}</textarea>
+    </div>
+</fieldset>
+
+<fieldset class="formulario__fieldset">
+    <div class="formulario__campo">
+        <label for="id_estado" class="formulario__label">Estado</label>
+        <select class="formulario__input" id="id_estado" name="id_estado">
+            <option value="" selected disabled>--Seleccionar--</option>
+            {% for estado in estados %}
+                <option value="{{ estado.id_estado }}" {% if portafolio.id_estado.id_estado == estado.id_estado %}selected{% endif %}>{{ estado.nombre }}</option>
+            {% endfor %}
+        </select> 
+    </div>
+</fieldset>
+
+
+<fieldset class="formulario__fieldset">
+    <legend class="formulario__legend">Información Aptitudes</legend>
+
+    <div class="formulario__campo">
+        <label for="aptitudes" class="formulario__label">Aptitudes Adquiridas Seleccione al menos una</label>
+        <div class="custom-select">
+            <ul id="aptitudes-list" class="columnas-{{ aptitudes|length }}">
+                {% for aptitud in aptitudes %}
+                    <li>
+                        <input type="checkbox" name="aptitudes" id="aptitud{{ aptitud.id_aptitude }}" value="{{ aptitud.id_aptitude }}" {% if aptitud in portafolio.aptitudes.all %}checked{% endif %}>
+                        <label for="aptitud{{ aptitud.id_aptitude }}">{{ aptitud.nombre }}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset class="formulario__fieldset">
+    <legend class="formulario__legend">Enlaces</legend>
+
+    <div class="formulario__campo">
+        <div class="formulario__contenedor-icono">
+            <div class="formulario__icono">
+                <i class="fa-brands fa-github"></i>
+            </div>
+            <input
+                type="text"
+                class="formulario__input--sociales"
+                name="enlaces_github"
+                id="enlaces_github"
+                placeholder="GitHub"
+                value="{{ portafolio.enlaces_github }}"
+            >
+        </div>
+    </div>
+
+    <div class="formulario__campo">
+        <div class="formulario__contenedor-icono">
+            <div class="formulario__icono">
+                <i class="fa-solid fa-code"></i>
+            </div>
+            <input
+                type="text"
+                class="formulario__input--sociales"
+                name="enlaces_web"
+                id="enlaces_web"
+                placeholder="Silio Web"
+                value="{{ portafolio.enlaces_web }}"
+            >
+        </div>
+    </div>
+</fieldset>

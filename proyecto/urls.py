@@ -1,45 +1,44 @@
 from django.urls import path
-from . import views
+from proyecto.views import views
+from adminStanley.views.viewCertificados import agregarCertificado,editarCertificado,eliminarCertificado, stanleyCertificado
+from adminStanley.views.viewPortafolios import agregarPortafolio,editarPortafolio,eliminarPortafolio, stanleyPortafolio
+from adminStanley.views.views import agregarAptitud, agregarContacto,dashboard, eliminar_aptitud,perfilEditar, stanleySobremi
+
 urlpatterns = [
     path('', views.index , name='index'),
     path('hobby/', views.hobby , name='hobby'),
     path('portafolio/', views.portafolio , name='portafolio'),
     path('sobre-mi/', views.sobreMi , name='sobreMi'),
     path('404/', views.sorry , name='sorry'),
-    path('stanley/', views.dashboard , name='dashboard'),
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
+    path('stanley/', dashboard, name='dashboard'),
 
+
+    
 # CRETIFICADO
-    path('stanley/certificado/agregar/', views.agregarCertificado, name='agregarCertificado'),
-    path('stanley/certificado/editar/<int:pk>', views.editarCertificado, name='editarCertificado'),
-    path('stanley/certificado/eliminar/<str:pk>', views.eliminarCertificado, name='eliminarCertificado'),
-    path('stanley/certificado/', views.stanleyCertificado, name='stanleyCertificado'),
+    path('stanley/certificado/agregar/', agregarCertificado, name='agregarCertificado'),
+    path('stanley/certificado/editar/<int:pk>', editarCertificado, name='editarCertificado'),
+    path('stanley/certificado/eliminar/<str:pk>', eliminarCertificado, name='eliminarCertificado'),
+    path('stanley/certificado/', stanleyCertificado, name='stanleyCertificado'),
 
 # PORTAFOLIO
-    path('stanley/portafolio/', views.stanleyPortafolio, name='stanleyPortafolio'),
-    path('stanley/portafolio/agregar/', views.agregarPortafolio, name='agregarPortafolio'),
-    path('stanley/portafolio/editar/<int:pk>', views.editarPortafolio, name='editarPortafolio'),
-    path('stanley/portafolio/eliminar/<str:pk>', views.eliminarPortafolio, name='eliminarPortafolio'),
+    path('stanley/portafolio/', stanleyPortafolio, name='stanleyPortafolio'),
+    path('stanley/portafolio/agregar/', agregarPortafolio, name='agregarPortafolio'),
+    path('stanley/portafolio/editar/<int:pk>', editarPortafolio, name='editarPortafolio'),
+    path('stanley/portafolio/eliminar/<str:pk>', eliminarPortafolio, name='eliminarPortafolio'),
 
-    path('stanley/sobreMi/', views.stanleySobremi, name='stanleySobremi'),
+    path('stanley/sobreMi/', stanleySobremi, name='stanleySobremi'),
 
 
     # PERFIL
-    path('stanley/perfil/', views.perfilEditar, name='perfilEditar'),
+    path('stanley/perfil/', perfilEditar, name='perfilEditar'),
+    path('stanley/contacto/', agregarContacto, name='perfilEditar'),
 
-    # path('signup/', views.signup, name='signup'),
-    # path('producto/', views.producto , name='producto'),
-    # path('comprar/<int:pk>/', views.comprar , name='comprar'),
-    # path('verificaCompra/', views.verificaCompra , name='verificaCompra'),
-    # path('carrito/<int:producto_pk>', views.carrito, name='carrito'),
-    # path('crear', views.crear, name='crear'),
-    # path('eliminarCarrito/<int:carrito_pk>', views.eliminarCarrito, name='eliminarCarrito'),
-    # path('actualizar/<str:pk>', views.actualizar, name='actualizar'),
-    # path('productoUpdate/<int:pk>/', views.productoUpdate, name='productoUpdate'),
-    # path('vendedor/', views.vendedor , name='vendedor'),
-    # path('vendedorIndex/', views.vendedorIndex , name='vendedorIndex'),
-    # path('contacto/', views.contacto , name='contacto'),    
-    # path('nosotros/', views.nosotros , name='nosotros'),
-    # path('sorry/', views.sorry , name='sorry'),
+
+#   APTITUDES
+    path('stanley/aptitud/', agregarAptitud, name='agregarAptitud'),
+    path('stanley/eliminar_aptitud/<int:aptitud_id>/', eliminar_aptitud, name='eliminar_aptitud'),
+
+
 ]

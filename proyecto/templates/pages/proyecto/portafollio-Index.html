@@ -1,0 +1,29 @@
+  
+{% extends "../../base/base.html" %}
+{% load static %} 
+
+{% block content%}
+ 
+
+<main id="portafolio" class="proyecto">
+    <h1  class="proyecto__titulo">Proyecto Finalizado </h1>
+
+    <!-- PROYECTO FINALIZADO -->
+    {% include '../proyecto/estado/proyectoFinalizado.html' %}
+
+    <!-- PROYECTO EN CURSO -->
+    {% include '../proyecto/estado/proyectoEnCurso.html' %}
+
+    <!-- PROYECTO PENDIENTE -->
+    {% include '../proyecto/estado/proyectoPendiente.html' %}
+
+
+
+
+</main>        
+
+
+
+
+
+{%endblock%}

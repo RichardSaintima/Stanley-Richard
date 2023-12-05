@@ -37,6 +37,7 @@
     "terser": "^4.8.0"
   },
   "dependencies": {
+    "sweetalert2": "^11.7.32",
     "swiper": "^10.3.0",
     "webpack-stream": "^7.0.0"
   }

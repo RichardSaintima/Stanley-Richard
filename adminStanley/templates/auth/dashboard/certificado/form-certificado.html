@@ -1,0 +1,89 @@
+
+    <fieldset class="formulario__fieldset">
+        <legend class="formulario__legend">Nombre y Escuela</legend>
+
+        <div class="formulario__campo">
+            <label for="nombre" class="formulario__label">Nombre Certificado</label>
+            <input
+                type="text"
+                class="formulario__input"
+                id="nombre"
+                name="nombre"
+                placeholder="Nombre Certi"
+                value="{{ certificado.titulo }}"
+            >
+        </div>
+
+        <div class="formulario__campo">
+            <label for="nombreEscuela" class="formulario__label">Nombre Escuela</label>
+            <input
+                type="text"
+                class="formulario__input"
+                id="nombreEscuela"
+                name="nombreEscuela"
+                placeholder="Nombre Escuela"
+                value="{{ certificado.nombre_escuela }}"
+            >
+        </div>
+
+        <div class="formulario__campo">
+            <label for="imagen" class="formulario__label">Imagen del Certificado</label>
+            <div class="formulario__campo">
+                <input
+                    type="file"
+                    class="formulario__input formulario__input--file"
+                    id="imagen"
+                    name="imagen"
+                    onchange="mostrarImagen(this)"
+                    accept="image/jpeg, image/png"
+                >
+            </div>
+            <div  class="formulario__imagen-seleccionada">
+                <div class="imagenSeleccionada"></div>
+                {% if certificado.imagen_certificado %}
+                    <img src="{{ certificado.imagen_certificado.url }}" alt="Imagen del Certificado">
+                {% endif %}
+            </div>
+        </div>
+        
+    </fieldset>
+
+    <fieldset class="formulario__fieldset">
+        <legend class="formulario__legend">Información Aptitudes</legend>
+    
+        <div class="formulario__campo">
+            <label for="aptitudes" class="formulario__label">Aptitudes Adquiridas Seleccione al menos una</label>
+            <div class="custom-select">
+                <ul id="aptitudes-list" class="columnas-{{ aptitudes|length }}">
+                    {% for aptitud in aptitudes %}
+                        <li>
+                            <input type="checkbox" name="aptitudes" id="aptitud{{ aptitud.id_aptitude }}" value="{{ aptitud.id_aptitude }}" {% if aptitud in certificado.aptitudes.all %}checked{% endif %}>
+                            <label for="aptitud{{ aptitud.id_aptitude }}">{{ aptitud.nombre }}</label>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </fieldset>
+
+    
+    <fieldset class="formulario__fieldset">
+        <legend for="enlaces[]" class="formulario__legend">Enlaces</legend>
+    
+        <div class="formulario__campo">
+            <div class="formulario__contenedor-icono">
+                <div class="formulario__icono">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <input
+                    type="text"
+                    class="formulario__input--sociales"
+                    is="enlaces_web"
+                    name="enlaces_web"
+                    placeholder="Sitio web"
+                    value="{{certificado.enlaces_web }}"
+                >
+            </div>
+        </div>
+    </fieldset>
+    
