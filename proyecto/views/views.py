@@ -5,7 +5,7 @@ from datetime import datetime
 from proyecto.Authenticacion.custom_auth import check_session, custom_authenticate, custom_login, custom_logout, login_required
 
 @check_session
-def index(request, session):
+def inicio(request, session):
     persona = stanley.objects.first() 
     redes_sociales = persona.redes_sociales.all()
     sobremi = Sobremi.objects.first()
@@ -16,7 +16,32 @@ def index(request, session):
         "redes_sociales": redes_sociales,
         "sobremi": sobremi,
     }
-    return render(request, 'pages/start/index.html', context)
+    return render(request, 'pages/start/inicio.html', context)
+
+@check_session
+def index(request, session):
+    persona = stanley.objects.first() 
+    redes_sociales = persona.redes_sociales.all()
+    sobremi = Sobremi.objects.first()
+    certificados = Certificado.objects.all()
+    aptitudes = Aptitude.objects.all()
+
+    portafolios_completados = Portafolio.objects.filter(id_estado__nombre="Completado")
+    portafolios_en_curso = Portafolio.objects.filter(id_estado__nombre="EnCurso")
+    portafolios_pendientes = Portafolio.objects.filter(id_estado__nombre="Pendiente")
+
+    context = {
+        "persona": persona,
+        "session": session,
+        "redes_sociales": redes_sociales,
+        "sobremi": sobremi,
+        "certificados": certificados,
+        "aptitudes": aptitudes,
+        "portafolios_completados": portafolios_completados,
+        "portafolios_en_curso": portafolios_en_curso,
+        "portafolios_pendientes": portafolios_pendientes,
+    }
+    return render(request, 'pages/index.html', context)
 
 
 
@@ -26,7 +51,7 @@ def hobby(request, session):
     persona = stanley.objects.first()
     redes_sociales = persona.redes_sociales.all()
     context = {
-        "titulo": "Hobby",
+        "titulo": "Mi Hobby",
         "session": session,
         "persona": persona,
         "redes_sociales": redes_sociales,
@@ -45,7 +70,7 @@ def portafolio(request, session):
     portafolios_pendientes = Portafolio.objects.filter(id_estado__nombre="Pendiente")
 
     context = {
-        "titulo": "Portafolio",
+        "titulo": "Mis Portafolios",
         "session": session,
         "persona": persona,
         "redes_sociales": redes_sociales,
@@ -121,7 +146,6 @@ def logout(request):
 
 
 def sorry(request, exception):
-    # return HttpResponse("Lo sentimos pero la página que buscas no existe")
     persona = stanley.objects.first()
     context = {
         "titulo": "404",

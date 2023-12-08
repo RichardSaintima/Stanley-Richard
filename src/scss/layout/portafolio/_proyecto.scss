@@ -10,7 +10,7 @@
         @include m.contenedor-md;
         padding: 2rem;
         text-align: center;
-        @include m.texto-fluido(1rem, 2rem);
+        @include m.texto-fluido(3rem, 5rem);
         font-weight: 700;
         margin-bottom: 2rem;
         color: v.$verde;
@@ -122,6 +122,39 @@
             }
         }  
      }
-    
 
+     &__navegacion {
+        
+            display: none;
+            @include m.tablet {
+                display: flex;
+                align-items: center;
+                top: 0;
+                right: 0;
+                padding: 1rem;
+            }
+        
+        &--enlace {
+            @include m.tablet {
+                text-transform: uppercase;
+                font-weight: v.$black;
+                color: v.$verde;
+                font-size: .8rem;
+                padding: 1rem;
+                @include m.texto-fluido(.8rem, 1.8rem);
+                &:hover {
+                    background-color: v.$principal-claro;
+                    color: v.$verde-claro;
+                }
+            }
+        }
+
+    }
+}
+#nav-portafolio {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
 }

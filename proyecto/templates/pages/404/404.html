@@ -1,13 +1,7 @@
-{% extends "../../base/base.html" %}
-{% load static %} 
-{%block title%} 404  {%endblock%}
 
-{% block content %}
-
+<h1 class="dashboard__titulo">{{ titulo }}</h1>
 <main class="error">
     <p class="error__titulo">Pagina no Encontrado</p>
     <p class="error__descripcion">Verifica el URL o talvez Quieres ir la</p>
     <a href="/">Ir al Inicio</a>
 </main>
-
-{% endblock %}

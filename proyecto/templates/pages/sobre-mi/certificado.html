@@ -1,25 +1,28 @@
 {% load static %} 
-<h1 class="sobreMi__subtitulo">Mis Certificados</h1>
-<div class="sobreMi__certificado">
-    {% for certificado in certificados %}
-        <div class="sobreMi__certificado--tipo">
-            <p class="sobreMi__certificado--tipo--nombre">{{ certificado.titulo }}</p>
-            <p class="sobreMi__certificado--tipo__escuela">{{ certificado.nombre_escuela }}</p>
-            <picture>
-                <source srcset="{{ certificado.imagen_certificado.url }}" type="image/avif" alt="{{ certificado.titulo }}">
-                <source srcset="{{ certificado.imagen_certificado.url }}" type="image/webp" alt="{{ certificado.titulo }}">
-                <img loading="lazy" width="200" height="300" src="{{ certificado.imagen_certificado.url }}" type="image/jpeg" alt="{{ certificado.titulo }}">
-            </picture>
-            <p class="sobreMi__certificado--tipo__aptitudes">Aptitudes Adquiridas:</p>
-            <ul>
-                {% for aptitud in certificado.aptitudes.all %}
-                    <li>{{ aptitud.nombre }}</li>
-                {% endfor %}
-            </ul>
-            <button class="sobreMi__certificado--tipo__ver">
-                <a href="{{ certificado.enlaces_web }}">Mostrar credencial</a>
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </button>
-        </div>
-    {% endfor %}
+<div id="certificados">
+    <h1 class="sobreMi__subtitulo">Mis Certificados</h1>
+    <div class="sobreMi__certificado" >
+        {% for certificado in certificados %}
+            <div class="sobreMi__certificado--tipo">
+                <p class="sobreMi__certificado--tipo--nombre">{{ certificado.titulo }}</p>
+                <p class="sobreMi__certificado--tipo__escuela">{{ certificado.nombre_escuela }}</p>
+                <picture>
+                    <source srcset="{{ certificado.imagen_certificado.url }}" type="image/avif" alt="{{ certificado.titulo }}">
+                    <source srcset="{{ certificado.imagen_certificado.url }}" type="image/webp" alt="{{ certificado.titulo }}">
+                    <img loading="lazy" width="200" height="300" src="{{ certificado.imagen_certificado.url }}" type="image/jpeg" alt="{{ certificado.titulo }}">
+                </picture>
+                <p class="sobreMi__certificado--tipo__aptitudes">Aptitudes Adquiridas:</p>
+                <ul>
+                    {% for aptitud in certificado.aptitudes.all %}
+                        <li>{{ aptitud.nombre }}</li>
+                    {% endfor %}
+                </ul>
+                <button class="sobreMi__certificado--tipo__ver">
+                    <a href="{{ certificado.enlaces_web }}">Mostrar credencial</a>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+    
 </div>

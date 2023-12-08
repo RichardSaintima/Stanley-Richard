@@ -6,6 +6,7 @@ from adminStanley.views.views import agregarAptitud, agregarContacto,dashboard, 
 
 urlpatterns = [
     path('', views.index , name='index'),
+    path('inicio/', views.inicio , name='inicio'),
     path('hobby/', views.hobby , name='hobby'),
     path('portafolio/', views.portafolio , name='portafolio'),
     path('sobre-mi/', views.sobreMi , name='sobreMi'),

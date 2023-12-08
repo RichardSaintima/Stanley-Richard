@@ -1,12 +1,7 @@
-  
-{% extends "../../base/base.html" %}
-{% load static %} 
-
-{% block content%}
- 
-
+<!-- PORTAFOLIO -->
+<h1 class="dashboard__titulo">{{ titulo }}</h1>
 <main id="portafolio" class="proyecto">
-    <h1  class="proyecto__titulo">Proyecto Finalizado </h1>
+    <h1  class="proyecto__titulo">Portafolios </h1>
 
     <!-- PROYECTO FINALIZADO -->
     {% include '../proyecto/estado/proyectoFinalizado.html' %}
@@ -16,14 +11,6 @@
 
     <!-- PROYECTO PENDIENTE -->
     {% include '../proyecto/estado/proyectoPendiente.html' %}
-
-
-
-
 </main>        
 
 
-
-
-
-{%endblock%}

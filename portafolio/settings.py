@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-kh4vel1f-!1iv!ka(rw$p(-&##t7_c&21^z1luflf3fg%xmzxb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True 
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
 
 
 
@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'proyecto',
     'adminStanley',
     'django.contrib.humanize',
-    # 'sass_processor',
 ]
 
 MIDDLEWARE = [
