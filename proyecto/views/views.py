@@ -20,6 +20,14 @@ def inicio(request, session):
 
 @check_session
 def index(request, session):
+    if 'id_persona' in request.session:
+        persona_id = request.session['id_persona']
+        context = {
+        "titulo": "Inicio",
+        "persona_id": persona_id,
+        "session": session,
+        }
+        return render(request, 'pages/start/inicio.html', context)
     persona = stanley.objects.first() 
     redes_sociales = persona.redes_sociales.all()
     sobremi = Sobremi.objects.first()

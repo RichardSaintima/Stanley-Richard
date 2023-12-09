@@ -124,7 +124,7 @@
      }
 
      &__navegacion {
-        
+
             display: none;
             @include m.tablet {
                 display: flex;
@@ -133,7 +133,6 @@
                 right: 0;
                 padding: 1rem;
             }
-        
         &--enlace {
             @include m.tablet {
                 text-transform: uppercase;
@@ -147,14 +146,20 @@
                     color: v.$verde-claro;
                 }
             }
-        }
+            @include m.telefono {
+                text-transform: uppercase;
+                font-weight: v.$black;
+                color: v.$verde;
+                font-size: .8rem;
+                padding: 1rem;
+                @include m.texto-fluido(.5rem, 1rem);
+    
+                &:hover {
+                    background-color: v.$principal-claro;
+                    color: v.$verde-claro;
+                }
+            }
 
-    }
-}
-#nav-portafolio {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; 
+        }
+    }  
 }

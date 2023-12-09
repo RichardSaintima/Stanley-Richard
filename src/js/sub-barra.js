@@ -1,28 +1,30 @@
-(function(){
+(function() {
     document.addEventListener('scroll', function() {
-        // Obtén la posición actual del usuario en la página
         var scrollPosition = window.scrollY;
-    
-        // Obtén la altura de las barras de navegación
+
         var barraPrincipal = document.getElementById('nav');
         var barraPortafolio = document.getElementById('nav-portafolio');
+        var barraSobreMi = document.getElementById('nav-sobremi');
         var barraPrincipalHeight = barraPrincipal.offsetHeight;
-        var barraPortafolioHeight = barraPortafolio.offsetHeight;
-    
-        // Obtén la posición del elemento "Portafolio" en la página
+        
         var portafolioSection = document.getElementById('portafolio');
+        var sobreMiSection = document.getElementById('sobre-mi');
         var portafolioSectionPosition = portafolioSection.offsetTop;
-    
-        // Compara la posición del usuario y la posición del elemento "Portafolio"
-        if (scrollPosition >= portafolioSectionPosition - barraPrincipalHeight) {
-            // Si el usuario ha alcanzado la sección "Portafolio", muestra ambas barras de navegación
-            barraPrincipal.style.display = 'none';
+        var sobreMiSectionPosition = sobreMiSection.offsetTop;
+
+        if (scrollPosition >= portafolioSectionPosition - barraPrincipalHeight &&
+            scrollPosition < sobreMiSectionPosition - barraPrincipalHeight) {
+                
             barraPortafolio.style.display = 'block';
-        } else {
-            // Si el usuario está en otras secciones, muestra solo la barra principal
-            barraPrincipal.style.display = 'block';
+            barraSobreMi.style.display = 'none';
+        } else if (scrollPosition >= sobreMiSectionPosition - barraPrincipalHeight) {
+            
             barraPortafolio.style.display = 'none';
+            barraSobreMi.style.display = 'block';
+        } else {
+
+            barraPortafolio.style.display = 'none';
+            barraSobreMi.style.display = 'none';
         }
     });
-    
 })();

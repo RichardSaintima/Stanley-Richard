@@ -30,7 +30,7 @@
         flex-direction: column;
         position: fixed;
         right:.5rem;
-        top: 64px;
+        top: 6.1rem;
         width: 200px;
         height: 0;
         border-bottom-left-radius: 15px;
@@ -57,5 +57,9 @@
 }
 .abrirMenu {
     height: 212px;
+    z-index: 10000;
+    @include m.tablet {
+        height: 0;
     }
+}
 

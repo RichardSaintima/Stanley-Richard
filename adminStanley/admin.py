@@ -1,7 +1,6 @@
-
 from django.contrib import admin
-from adminStanley.models.models import stanley, Sobremi,Portafolio,Certificado,Aptitude,RedSocial,Estado
-# Register your models here.
+from adminStanley.models.models import stanley, Sobremi, Portafolio, Certificado, Aptitude, RedSocial, Estado
+
 
 class personaAdmin(admin.ModelAdmin) :
     list_display =['id_persona',  'nombre_usuario','password']

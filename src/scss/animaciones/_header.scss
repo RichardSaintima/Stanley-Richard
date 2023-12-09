@@ -2,17 +2,6 @@
 @use'base/mixins' as m;
 
 .header {
-    // background-color: v.$color-primario;
-    // color: v.$color-blanco;
-    // padding: 1rem;
-    // text-align: center;
-    // @include m.responsive('tablet') {
-    //     padding: 2rem;
-    // }
-    // @include m.responsive('desktop') {
-    //     padding: 3rem;
-    // }
-
     &.fijo {
         position: fixed;
         top: 0;

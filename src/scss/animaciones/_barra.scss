@@ -1,0 +1,24 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+    
+
+.subBarra {
+    &__portafolio,
+    &__sobreMi {
+        position: fixed;
+        text-align: right;
+        top: 6.1rem;
+        right: 0.5rem;
+        left: 0.5rem;
+        width: 100%;
+        z-index: 1000;
+        background-color: rgba(0, 0, 0, 0.539);
+        box-shadow: 0.4rem 0.4rem 0.4rem v.$principal-claro;
+
+        a {
+            @include m.texto-fluido(.8rem, 1.5rem);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    } 
+    
+}
