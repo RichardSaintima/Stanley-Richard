@@ -8,7 +8,7 @@
 <main class="dashboard__formulario">
     {% include '../../components/alertas.html' %} 
     
-    <form method="POST"  class="formulario">
+    <form method="POST" action="{% url 'agregarAptitud' %}" class="formulario">
         {% csrf_token %}
 
         <fieldset class="formulario__fieldset">

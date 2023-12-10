@@ -17,6 +17,7 @@ class Aptitude(models.Model):
     id_aptitude = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
     
+    
 class stanley(models.Model):
     id_persona = models.AutoField(primary_key=True)
     nombre_usuario = models.CharField(max_length=60)

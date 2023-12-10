@@ -178,7 +178,7 @@
     list-style: none;
 }
 
-@mixin tags ($color, $fontsize : 1.4rem ) {
+@mixin tags ($color, $fontsize : 1.4rem, $colortext : v.$blanco ) {
     @include reset-lista;
     display: flex;
     flex-wrap: wrap;
@@ -191,11 +191,8 @@
         border-radius: .5rem;
         font-size: $fontsize ;
         font-weight: v.$bold;
-        color: v.$blanco;
+        color: $colortext;
         
-    }
-    &:hover {
-      cursor: pointer;
     }
 }
 

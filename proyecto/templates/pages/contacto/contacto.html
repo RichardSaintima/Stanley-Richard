@@ -1,0 +1,35 @@
+{% load static %}
+
+<div id="contacto" class="contacto">
+    <h1 class="contacto__titulo">Contacto</h1>
+
+    <form action="{% url 'enviar_mensaje' %}" method="post" class="login__formulario" novalidate>
+        {% csrf_token %}
+
+        {% include '../../components/alertas.html'%}
+
+        <div class="contacto__formulario--campo">
+            <label for="nombre">Nombre:</label>
+            <input class="formulario__input" type="text" id="nombre" name="nombre" required>
+        </div>
+
+        <div class="contacto__formulario--campo">
+            <label for="email">Correo Electrónico:</label>
+            <input class="formulario__input" type="email" id="email" name="email" required>
+        </div>
+
+        <div class="contacto__formulario--campo">
+            <label for="asunto">Asunto:</label>
+            <input class="formulario__input" type="text" id="asunto" name="asunto" required>
+        </div>
+
+        <div class="contacto__formulario--campo">
+            <label for="mensaje">Mensaje:</label>
+            <textarea  id="mensaje" name="mensaje" rows="4" required></textarea>
+        </div>
+        
+        <input type="submit" class="boton" value="Enviar Mensaje">
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

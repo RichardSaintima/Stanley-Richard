@@ -19,7 +19,12 @@
         border-bottom: 0.1rem solid v.$verde;
         margin-top: 2rem;
     }
-
+    &__estados {
+        @include m.texto-fluido(1.5rem, 2.5rem);
+        text-align: center;
+        font-weight: v.$black;
+        margin-top: 2rem;
+    }
     &__subtitulo {
         @include m.contenedor-md;
         padding: 2rem;

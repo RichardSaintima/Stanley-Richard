@@ -2,34 +2,57 @@
 @use'base/mixins' as m;
 
 .sobreMi {
-    
+    &__subtitulo {
+        @include m.texto-fluido(1.5rem, 3rem);
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
     &__gusto {
         @include m.contenedor;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        justify-content: center;
 
         @include m.tablet {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         }
 
         &--tipo {
-            display: flex;
-            flex-direction: column;
             @include m.texto-fluido(1rem, 2rem);
             font-weight: 700;
             text-transform: uppercase;
-            border-bottom: 0.2rem solid v.$principal-claro;
+            border: 0.2rem solid v.$principal-claro;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+
+            &:hover {
+                transform: scale(1.05);
+            }
 
             p {
                 text-align: center;
-            }
-            ul {
-                margin-top: 1rem;
-                li {
-                    padding: .5rem;
-                }
+                padding: 1rem;
+                background-color: v.$principal-claro;
+                color: v.$verde-claro;
             }
 
+            ul {
+                padding: 1rem;
+
+                li {
+                    padding: 0.5rem;
+                    list-style-type: none;
+                    border-bottom: 0.1rem solid v.$principal-claro;
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                }
+            }
         }
     }
 }

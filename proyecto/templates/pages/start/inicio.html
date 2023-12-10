@@ -21,7 +21,15 @@
             
             <h2>Stanley Richard</h2>
             <p>
-               {{ sobremi.descripcion_inicio }}
+               {{ sobremi.descripcion_inicio }} con conicimiento en :
+    
+               <div class="sobreMi__contenido--lista">
+                   <ul >
+                       {% for aptitud in aptitudes.all %}
+                       <li>{{ aptitud.nombre }}</li> 
+                       {% endfor %}
+                   </ul>
+               </div>
             </p>
             <button class="inicio__imagen--overlay--cv">
                 <i class="fa-solid fa-file-arrow-down"></i>

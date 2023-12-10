@@ -31,8 +31,7 @@
             margin: 6rem;
         }
         text-align: center;
-        
-        
+
 
         h2 {
             margin: auto;
@@ -59,7 +58,11 @@
             padding: 0.8rem;
             border: 3px solid v.$verde-claro;
             border-radius: 0.5rem;
-
+            &:hover {
+              background-color:v.$verde-claro;
+              cursor: pointer;
+          }
+          
             a,
             i {
             color: v.$negro;

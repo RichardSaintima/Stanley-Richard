@@ -1,16 +1,11 @@
-<!-- PORTAFOLIO -->
 <h1 class="dashboard__titulo">{{ titulo }}</h1>
 <main id="portafolio" class="proyecto">
     <h1  class="proyecto__titulo">Portafolios </h1>
 
     <!-- PROYECTO FINALIZADO -->
-    {% include '../proyecto/estado/proyectoFinalizado.html' %}
-
-    <!-- PROYECTO EN CURSO -->
-    {% include '../proyecto/estado/proyectoEnCurso.html' %}
+    {% include '../proyecto/estado/proyectoEstado.html' with proyectos=portafolios_completados estado="Finalizado" %}
 
     <!-- PROYECTO PENDIENTE -->
-    {% include '../proyecto/estado/proyectoPendiente.html' %}
-</main>        
-
+    {% include '../proyecto/estado/proyectoEstado.html' with proyectos=portafolios_pendientes estado="Pendiente" %}
+</main>
 

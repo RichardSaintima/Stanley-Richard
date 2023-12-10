@@ -8,7 +8,13 @@
             @include m.grid(4 , 1rem);
         }
 
-        &--tipo {            
+        &--tipo {      
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+
+            &:hover {
+                transform: scale(1.05);
+            }   
             &--nombre {
                 @include m.texto-fluido(.6rem, 1.5rem);
                 text-align: center;
@@ -22,11 +28,16 @@
             @include m.card;
             @include m.contenedor-md;
             ul {
-                @include m.tags(v.$verde-claro, 1rem);
+                @include m.tags(v.$principal-claro, 1rem, v.$verde-claro);
+                text-transform: uppercase;
+            }
+            li {
+                @include m.reset-lista;
             }
 
             &__aptitudes {
                 @include m.texto-fluido(.6rem, 1.2rem);
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
                 font-weight: v.$black;
             }
             &__ver {
@@ -35,8 +46,20 @@
                 background-color: transparent;
                 padding: .8rem;
                 border: none;
-                a,i {
-                    color: v.$blanco;  
+            
+                a, i {
+                    color: v.$blanco;
+                    text-decoration: none;
+                    display: inline-block; 
+                    vertical-align: middle;  
+                    padding: 1rem;
+                }
+                &:hover {
+                    cursor: pointer;
+                    a, i {
+                        background-color: v.$principal-claro;
+                        color: v.$verde;
+                    }
                 }
             }
         }

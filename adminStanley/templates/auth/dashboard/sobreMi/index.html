@@ -23,27 +23,6 @@
             </div>
         </fieldset>
 
-        <!-- <fieldset class="formulario__fieldset">
-            <legend class="formulario__legend">Información Aptitudes</legend>
-        
-            <div class="formulario__campo">
-                <label for="tags_input" class="formulario__label">Aptitude Adquirido (separadas por coma)</label>
-                <input
-                    type="text"
-                    class="formulario__input"
-                    id="tags_input"
-                    placeholder="Ej. Node.js, PHP, CSS, Laravel, UX / UI"
-                >
-        
-                <div id="tags" class="formulario__listado">
-                    {% for aptitud in sobremi.aptitudes.all %}
-                        {{ aptitud.nombre }},
-                    {% endfor %}
-                </div>
-                <input type="hidden" name="tags"  value="{{ sobremi.aptitudes.all|join:', ' }}">
-            </div>
-        </fieldset> -->
-        
         <fieldset class="formulario__fieldset">
             <div class="formulario__campo">
                 <label for="descripcion" class="formulario__label">Descripción Sobre mi</label>

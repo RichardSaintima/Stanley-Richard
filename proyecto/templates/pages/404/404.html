@@ -1,7 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
 
-<h1 class="dashboard__titulo">{{ titulo }}</h1>
-<main class="error">
-    <p class="error__titulo">Pagina no Encontrado</p>
-    <p class="error__descripcion">Verifica el URL o talvez Quieres ir la</p>
-    <a href="/">Ir al Inicio</a>
-</main>
+    <link rel="icon" type="image/png" href="{% static 'img/logo.avif' %}" />
+    <link rel="icon" type="image/png" href="{% static 'img/logo.webp' %}" />
+    <link rel="icon" type="image/png" href="{% static 'img/logo.png' %}" />
+    <title>{{ titulo }}</title>
+</head>
+<body>
+    <div class="pagerror">
+        <h1 class="pagerror__titulo">{{ titulo }}</h1>
+        <p class="pagerror__subtitulo">Pagina no Encontrado</p>
+        <p class="pagerror__descripcion">Verifica el URL o talvez Quieres ir la</p>
+        <a href="/">Ir al Inicio</a>
+    </div>
+</body>
+</html>

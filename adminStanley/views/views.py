@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.handlers.wsgi import WSGIRequest
 from django.contrib import messages
 from django.http import JsonResponse
-from django.db import transaction
+from django.contrib.auth.hashers import make_password
 from adminStanley.models.models import  RedSocial, Sobremi, stanley, Aptitude
 from adminStanley.validator.SobremiValidators import validate_sobremi_data
 from adminStanley.Authenticacion.custom_auth import custom_logout, login_required
@@ -51,6 +51,7 @@ def perfilEditar(request):
             persona.perfil = imagen_perfil
 
         persona.nombre_usuario = request.POST.get('nombre_usuario')
+        persona.password = request.POST.get('password')
         persona.save()
         messages.success(request, 'Perfil actualizado correctamente.')
         return redirect('perfilEditar') 
@@ -142,18 +143,8 @@ def eliminar_aptitud(request, aptitud_id):
 
 # FIN APTITUDES
 
-
 def logout(request):
     custom_logout(request)
     return redirect('/')
 
-def sorry(request: WSGIRequest, exception=None):
-    if request.path.startswith("/hobby/"):
-        return redirect('hobby')  
-    elif request.path.startswith("/sobre-mi/"):
-        return redirect('sobre-mi')  
-    elif request.path.startswith("/portafolio/"):
-        return redirect('portafolio')  
-    else:
-        return render(request, 'pages/404/404.html', status=404)
     

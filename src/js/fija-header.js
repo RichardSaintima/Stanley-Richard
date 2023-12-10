@@ -1,11 +1,10 @@
-(function(){
+(function () {
     const barra = document.querySelector('.header');
     const fijaHeader = document.querySelector('.fijaHeader');
     const body = document.querySelector('body');
-    
-    
-    window.addEventListener('scroll', function() {
-        if( fijaHeader.getBoundingClientRect().bottom < 0  ) {
+
+    window.addEventListener('scroll', function () {
+        if (fijaHeader && fijaHeader.getBoundingClientRect().bottom < 0) {
             barra.classList.add('fijo');
             body.classList.add('body-scroll');
         } else {
@@ -14,6 +13,9 @@
         }
     });
 
-    const currentYear = new Date().getFullYear();
-    document.getElementById('current-year').textContent = currentYear;
+    const currentYearElement = document.getElementById('current-year');
+    if (currentYearElement) {
+        const currentYear = new Date().getFullYear();
+        currentYearElement.textContent = currentYear;
+    }
 })();

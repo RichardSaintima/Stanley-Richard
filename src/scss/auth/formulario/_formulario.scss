@@ -92,6 +92,11 @@
 
     &__listado {
         @include m.tags(v.$verde-claro);
+         li {
+            &:hover {
+                cursor: pointer;
+              }
+         }
     }
 
     &__submit {

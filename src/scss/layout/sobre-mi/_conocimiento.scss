@@ -36,16 +36,10 @@
         &--lista {
             @include m.contenedor-md;
             ul {
-                @include m.tags(v.$verde-claro);
+                @include m.tags(v.$principal-claro, 1rem, v.$verde-claro);
+                text-transform: uppercase;
+                @include m.grid(3, 1rem);
             }
         }
     }
-} 
-        // ul {
-        //     text-decoration: double;
-        //     list-style: square;
-        //     color: v.$blanco;
-        //     font-weight: v.$delgada;
-        //     @include m.texto-fluido(1rem, 2rem);
-        // }
-    
+}

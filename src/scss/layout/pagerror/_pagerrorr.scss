@@ -1,0 +1,59 @@
+@use'base/variables' as v;
+@use'base/mixins' as m;
+
+.pagerror {
+    @include m.contenedor-md;
+    @include m.texto-fluido(1rem, 4rem);
+    text-align: center;
+    height: 90vh;
+    &__titulo {
+        @include m.contenedor-md;
+        padding: 2rem;
+        text-align: center;
+        @include m.texto-fluido(3rem, 5rem);
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: v.$verde;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        border-bottom: 0.1rem solid v.$verde;
+        margin-top: 2rem;
+    }
+    &__descripcion {
+        @include m.texto-fluido(1.5rem, 2.5rem);
+        text-align: center;
+        font-weight: v.$black;
+        margin-top: 2rem;
+    }
+    &__subtitulo {
+        @include m.contenedor-md;
+        padding: 2rem;
+        @include m.texto-fluido(1rem, 2rem);
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: v.$verde;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        margin-top: 2rem;
+    }
+
+    a {
+        @include m.texto-fluido(.6rem, 1.2rem);
+        font-weight: v.$bold;
+        background-color: v.$principal-claro;
+        color: v.$verde;  
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;  
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+        cursor: pointer;
+    
+        &:hover {
+            background-color: v.$verde; 
+            color: v.$blanco;
+        }
+    }
+}

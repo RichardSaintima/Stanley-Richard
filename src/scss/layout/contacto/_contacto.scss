@@ -1,0 +1,68 @@
+@use'base/variables' as v;
+@use'base/mixins' as m;
+
+.contacto {
+    @include m.contenedor-sm;
+    @include m.texto-fluido(.5rem, 3rem);
+
+    &__titulo {
+        @include m.contenedor-md;
+        padding: 2rem;
+        text-align: center;
+        @include m.texto-fluido(3rem, 5rem);
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: v.$verde;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        border-bottom: 0.1rem solid v.$verde;
+        margin-top: 2rem;
+    }
+
+    input[type="submit"] {
+        @include m.boton(v.$verde, v.$blanco);
+        padding: 1.5rem 2rem; 
+        @include m.texto-fluido(1.5rem, 2.5rem);
+        transition: background-color 0.3s ease;
+    }
+    
+    input[type="submit"]:hover {
+        background-color: darken(v.$verde, 10%); 
+    }
+    
+    &__descripcion-pagina {
+        @include m.texto-fluido(1.6rem, 3rem);
+        text-align: center;
+        font-weight: v.$black;
+        margin: 5rem;
+
+    }
+
+    &__formulario {
+        margin-top: 5rem;
+    
+        &--campo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            
+            label {
+                flex: 0 0 10rem;
+                @include m.texto-fluido(.9rem, 1.7rem);
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+                color: v.$verde-claro;           
+            }
+    
+            input,
+            textarea {
+                flex: 1;
+                padding: 1rem;
+                border: none;
+                background-color: lighten(v.$principal-claro, 50%);
+                @include m.texto-fluido(1rem, 1.5rem);
+                color: v.$verde-claro;
+            }
+        }
+    
+    }
+}

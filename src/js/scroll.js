@@ -1,6 +1,6 @@
 (function(){
     document.addEventListener("DOMContentLoaded", function () {
-        const enlacesNavegacion = document.querySelectorAll('.header__navegacion--enlace');
+        const enlacesNavegacion = document.querySelectorAll('.hacerCroll');
 
         enlacesNavegacion.forEach(function (enlace) {
             enlace.addEventListener('click', function (e) {
