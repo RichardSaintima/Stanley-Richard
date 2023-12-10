@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.db import transaction
@@ -85,6 +86,11 @@ def editarCertificado(request, pk):
         validation_result = validate_certificado_data_edit(titulo, nombre_escuela, enlaces_web, aptitudes_ids)
 
         if validation_result['valid']:
+
+            ruta_imagen_actual = certificado.imagen_portafolio.path if certificado.imagen_portafolio else None
+            if ruta_imagen_actual and imagen_certificado:
+                    os.remove(ruta_imagen_actual)
+
             certificado.titulo = titulo  if titulo is not None else certificado.titulo
             certificado.nombre_escuela = nombre_escuela if nombre_escuela is not None else certificado.nombre_esc
             certificado.imagen_certificado = imagen_certificado if imagen_certificado is not None else certificado.imagen_certificado
@@ -110,6 +116,12 @@ def editarCertificado(request, pk):
 def eliminarCertificado(request,pk):
     try:
         certificado = Certificado.objects.get(id_certificado=pk)
+        ruta_imagen_actual = certificado.imagen_portafolio.path
+        certificado.delete()
+
+        if os.path.exists(ruta_imagen_actual):
+            os.remove(ruta_imagen_actual)
+            
         certificado.delete()
         messages.success(request, 'Certificado Eliminado correctamente.', extra_tags='success')
         certificados = Certificado.objects.all()

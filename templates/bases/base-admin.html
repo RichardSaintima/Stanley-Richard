@@ -1,0 +1,14 @@
+{% include 'bases/cabeza.html' %}
+<body class="dashboard">
+    {% include 'layout/admin/header.html' %}
+    <div class="fijaHeader"></div>
+
+    <div class="dashboard__grid">
+        {% include 'layout/admin/sidebar.html' %}
+        <main class="dashboard__contenido">   
+            {% block content%} 
+
+            {%endblock%}
+        </main>
+    </div>
+{% include 'bases/pies.html' %}

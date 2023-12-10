@@ -1,12 +1,11 @@
-{% extends "../../base/base.html" %}
-{% load static %} 
-{%block title%} Nosotros  {%endblock%}
+{% extends "base/base.html" %}
+{% load static %}
 
 {% block content%}
  
 <div class="login">
-    <p class="login__descripcion-pagina">Iniciar Sesión</p>
-    {% include '../components/alertas.html' %} 
+    <p class="login__descripcion-pagina">{{ titulo }}</p>
+    {% include 'components/alertas.html' %} 
     
     <form method="post" action="{% url 'login' %}" class="login__formulario" novalidate>
         
@@ -25,12 +24,4 @@
         <input type="submit" class="boton" value="Iniciar Sesión">
     </form>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script>
-    $(document).ready(function(){
-
-    $("#idMensajes").delay(5000).fadeOut("slow");
-
-    });
-</script>
 {%endblock%}

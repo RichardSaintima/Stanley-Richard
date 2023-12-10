@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render, redirect
 from django.core.handlers.wsgi import WSGIRequest
 from django.contrib import messages
@@ -45,9 +46,13 @@ def stanleySobremi(request):
 def perfilEditar(request):
     if request.method == 'POST':
         persona = stanley.objects.get(id_persona=request.session['id_persona'])
+        ruta_imagen_actual = persona.perfil.path if persona.perfil else None
 
         imagen_perfil = request.FILES.get('imagen')
         if imagen_perfil:
+            if ruta_imagen_actual and os.path.exists(ruta_imagen_actual):
+                os.remove(ruta_imagen_actual)
+
             persona.perfil = imagen_perfil
 
         persona.nombre_usuario = request.POST.get('nombre_usuario')

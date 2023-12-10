@@ -38,6 +38,7 @@ def index(request, session):
     portafolios_pendientes = Portafolio.objects.filter(id_estado__nombre="Pendiente")
 
     context = {
+        "titulo": "Inicio",
         "persona": persona,
         "session": session,
         "redes_sociales": redes_sociales,
@@ -119,7 +120,7 @@ def login(request) :
             return render(request, 'auth/session/login.html', context)
 
 
-    context ={}
+    context = {"titulo": "Iniciar Sesion"}
     return render(request, 'auth/session/login.html',context)
 
 

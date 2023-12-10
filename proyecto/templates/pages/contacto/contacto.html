@@ -6,7 +6,7 @@
     <form action="{% url 'enviar_mensaje' %}" method="post" class="login__formulario" novalidate>
         {% csrf_token %}
 
-        {% include '../../components/alertas.html'%}
+        {% include 'components/alertas.html' %}
 
         <div class="contacto__formulario--campo">
             <label for="nombre">Nombre:</label>
@@ -31,5 +31,3 @@
         <input type="submit" class="boton" value="Enviar Mensaje">
     </form>
 </div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

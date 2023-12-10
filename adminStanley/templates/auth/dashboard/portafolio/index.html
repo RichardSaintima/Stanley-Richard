@@ -1,7 +1,5 @@
-
-{% extends "../../bases-admin/base-admin.html" %}
+{% extends "bases/base-admin.html" %}
 {% load static %} 
-
 {% block content%}
 
 <div class="dashboard__contenedor-boton">
@@ -14,7 +12,7 @@
 <h1 class="dashboard__titulo">{{ titulo }}</h1>
 
 <main class="dashboard__contenedor">
-    {% include '../../components/alertas.html' %} 
+    {% include 'components/alertas.html' %} 
 
     {% if portafolios %}
         <table class="table">

@@ -81,25 +81,29 @@
                 font-weight: v.$black;
             }
             &__ver {
-                @include m.texto-fluido(.6rem, 1.2rem);
-                font-weight: v.$black;
-                background-color: transparent;
-                padding: .8rem;
+                @include m.texto-fluido(.6rem, 1.4rem);
+                font-weight: v.$bold;
+                background-color: v.$principal-claro;  
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 1rem;  
+                margin-top: 2rem;
                 border: none;
+                border-radius: 5px;
+                transition: background-color 0.3s, color 0.3s;
+                width: 100%;
             
-                a, i {
-                    color: v.$blanco;
-                    text-decoration: none;
-                    display: inline-block; 
-                    vertical-align: middle;  
-                    padding: 1rem;
-                }
                 &:hover {
-                    cursor: pointer;
-                    a, i {
-                        background-color: v.$principal-claro;
-                        color: v.$verde;
-                    }
+                    cursor: pointer;                    
+                    background-color: v.$verde; 
+                    color: v.$blanco;
+                }
+                i,
+                 a {
+                    display: block;
+                     margin-left: 6px;
+                     color: v.$blanco;
                 }
             }
             

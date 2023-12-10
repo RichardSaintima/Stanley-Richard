@@ -1,7 +1,5 @@
-
-{% extends "../../bases-admin/base-admin.html" %}
+{% extends "bases/base-admin.html" %}
 {% load static %} 
-
 {% block content%}
 <div class="dashboard__contenedor-boton">
     <a class="dashboard__boton" href="/stanley/certificado/agregar">
@@ -11,13 +9,13 @@
 </div>
   
 <h1 class="dashboard__titulo">{{ titulo }}</h1>
-{% include '../../components/alertas.html' %} 
+{% include 'components/alertas.html' %} 
 
 
 
     <main class="dashboard__contenedor">
     {% if certificados %}
-        <table class="table">
+        <table class="table" aria-label="Certificados">
             <thead class="table__thead">
                 <tr>
                     <th scope="col" class="table__th">Imagen</th>
@@ -45,10 +43,7 @@
                             {{ certificado.nombre_escuela }}
                         </td>
                         <td class="table__td--aptitude" title="{% for aptitud in certificado.aptitudes.all %}{{ aptitud.nombre }}{% if not forloop.last %}, {% endif %}{% endfor %}">
-                            <!-- {% for aptitud in certificado.aptitudes.all %}
-                                {{ aptitud.nombre }}
-                                {% if not forloop.last %}, {% endif %}
-                            {% endfor %} -->
+
                             <i class="fa-solid fa-award"></i>
                         </td>
                         <td class="table__td--aptitude" title="{{certificado.enlaces_web }}">

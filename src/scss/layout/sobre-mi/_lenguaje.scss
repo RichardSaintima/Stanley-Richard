@@ -22,7 +22,7 @@
         flex-wrap: wrap;
         justify-content: center;
         
-        @include m.tablet{
+        @include m.tablet {
             justify-content: space-between;
             flex-wrap: nowrap;
         }
@@ -36,9 +36,9 @@
         }
 
         &--nivel {
-            flex: 1;
+            flex: 0 0 1;
             text-align: center;
-            @include m.texto-fluido(.5rem, 1.3rem);
+            @include m.texto-fluido(.4rem, 1rem);
             font-weight: v.$delgada;
             text-transform: uppercase;
             border-bottom: 0.1rem solid v.$principal-claro;
@@ -48,7 +48,7 @@
 
             &:hover {
                 transform: scale(1.05);
-            }
+            }          
 
             .nivel {
                 color: v.$verde;

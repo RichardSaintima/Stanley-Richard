@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.db import transaction
+import os
 from adminStanley.models.models import  stanley, Portafolio, Aptitude,Estado
 from adminStanley.Authenticacion.custom_auth import login_required
 from adminStanley.validator.PortafolioValidacion import validate_portafolio_data, validate_portafolio_data_edit
@@ -57,7 +58,7 @@ def agregarPortafolio(request):
                     return redirect('agregarPortafolio')
                 
             messages.success(request, 'Portafolio agregado correctamente.', extra_tags='success')
-            return redirect('/stanley/portafolio')
+            return redirect('stanleyPortafolio')
         else:
             for error_message in validation_result['errors']:
                 messages.error(request, error_message)
@@ -72,6 +73,8 @@ def agregarPortafolio(request):
     return render(request, 'auth/dashboard/portafolio/crear.html', context)
 
 
+
+import os
 
 @login_required
 def editarPortafolio(request, pk):
@@ -98,6 +101,10 @@ def editarPortafolio(request, pk):
         if validation_result['valid']:
             if id_estado is not None and id_estado.isdigit():
                 estado = Estado.objects.get(id_estado=int(id_estado))
+
+                ruta_imagen_actual = portafolio.imagen_portafolio.path if portafolio.imagen_portafolio else None
+                if ruta_imagen_actual and imagen_portafolio:
+                    os.remove(ruta_imagen_actual)
 
                 portafolio.imagen_portafolio = imagen_portafolio if imagen_portafolio is not None else portafolio.imagen_portafolio
                 portafolio.titulo = titulo if titulo is not None else portafolio.titulo
@@ -130,11 +137,17 @@ def editarPortafolio(request, pk):
 
 
 
+
 @login_required
 def eliminarPortafolio(request, pk):
     try:
         portafolio = Portafolio.objects.get(id_portafolio=pk)
+        ruta_imagen_actual = portafolio.imagen_portafolio.path
         portafolio.delete()
+
+        if os.path.exists(ruta_imagen_actual):
+            os.remove(ruta_imagen_actual)
+
         messages.success(request, 'Portafolio Eliminado correctamente.', extra_tags='success')
         portafolios = Portafolio.objects.all()
         context = {"titulo": "Portafolio", "portafolios": portafolios}

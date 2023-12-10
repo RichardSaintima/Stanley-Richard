@@ -4,7 +4,9 @@
 
 .subBarra {
     &__portafolio,
-    &__sobreMi {
+    &__sobreMi,
+    &__contacto,
+    &__hobby {
         position: fixed;
         text-align: right;
         top: 6.1rem;
@@ -19,6 +21,7 @@
             @include m.texto-fluido(.8rem, 1.5rem);
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         }
+
     } 
     
 }
