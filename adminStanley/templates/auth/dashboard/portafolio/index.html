@@ -3,7 +3,7 @@
 {% block content%}
 
 <div class="dashboard__contenedor-boton">
-    <a class="dashboard__boton" href="/stanley/portafolio/agregar">
+    <a class="dashboard__boton" href="/portafolio/agregar">
         <i class="fa-solid fa-circle-plus"></i>
         Añadir Proyecto
     </a>
@@ -15,7 +15,7 @@
     {% include 'components/alertas.html' %} 
 
     {% if portafolios %}
-        <table class="table">
+        <table class="table" aria-label="Portafolios">
             <thead class="table__thead">
                 <tr>
                     <th scope="col" class="table__th">Imagen</th>
@@ -68,12 +68,12 @@
                         
                         
                         <td class="table__td--acciones">
-                            <a class="table__accion table__accion--editar" href="{% url 'editarPortafolio' pk=portafolio.id_portafolio %}">
+                            <a class="table__accion table__accion--editar" href="{% url 'editar_portafolio' pk=portafolio.id_portafolio %}">
                                 <i class="fa-solid fa-pencil"></i>
                                 Editar
                             </a>
 
-                            <form method="POST" action="{% url 'eliminarPortafolio' pk=portafolio.id_portafolio %}" class="table__formulario">
+                            <form method="POST" action="{% url 'eliminar_portafolio' pk=portafolio.id_portafolio %}" class="table__formulario">
                                 {% csrf_token %}
                                 <input type="hidden" name="id" value="1">
                                 <button class="table__accion table__accion--eliminar" type="submit">

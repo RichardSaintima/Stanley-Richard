@@ -2,7 +2,7 @@
 {% load static %} 
 {% block content%}
 <div class="dashboard__contenedor-boton">
-    <a class="dashboard__boton" href="/stanley/certificado">
+    <a class="dashboard__boton" href="/dashboard/certificado">
         <i class="fa-solid fa-circle-arrow-left"></i>
         Volver
     </a>
@@ -12,7 +12,7 @@
 
 <main class="dashboard__formulario">
     {% include 'components/alertas.html' %} 
-        <form method="POST" action="{% url 'agregarCertificado' %}"  enctype="multipart/form-data" class="formulario">
+        <form method="POST" action="{% url 'agregar_certificado' %}"  enctype="multipart/form-data" class="formulario">
     {% csrf_token %}
     <!-- FORMULARIO -->
     {% include './form-certificado.html' %}

@@ -4,14 +4,13 @@
 html {
     font-size: 62.5%;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 *, *:before, *:after {
 box-sizing: inherit;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+    
 body {
     display: flex;
     flex-direction: column;
@@ -50,7 +49,6 @@ a {
     text-decoration: none;
 }
 img {
-    // max-width: 100%;
     width: 100%;
     height: auto;
     display: block;

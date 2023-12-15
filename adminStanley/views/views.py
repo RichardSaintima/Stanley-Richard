@@ -1,10 +1,9 @@
 import os
 from django.shortcuts import render, redirect
-from django.core.handlers.wsgi import WSGIRequest
 from django.contrib import messages
 from django.http import JsonResponse
 from django.contrib.auth.hashers import make_password
-from adminStanley.models.models import  RedSocial, Sobremi, stanley, Aptitude
+from adminStanley.models.models import  RedSocial, Sobremi, Stanley, Aptitude
 from adminStanley.validator.SobremiValidators import validate_sobremi_data
 from adminStanley.Authenticacion.custom_auth import custom_logout, login_required
 
@@ -14,11 +13,11 @@ def dashboard(request) :
     context = {"titulo": "Dashboard"}
     return render(request, 'auth/dashboard/index.html',context)
 
-# SOBRE MI
 
+# SOBRE MI
 @login_required
-def stanleySobremi(request):
-    sobremi_obj, created = Sobremi.objects.get_or_create(pk=1)  
+def dashboard_sobremi(request):
+    sobremi_obj, _ = Sobremi.objects.get_or_create(pk=1)  
 
     if request.method == 'POST':
         descripcion_inicio = request.POST.get('descripcion_inicio')
@@ -32,7 +31,7 @@ def stanleySobremi(request):
             sobremi_obj.save()
 
             messages.success(request, 'Sobre Mi agregado correctamente.', extra_tags='success')
-            return redirect('stanleySobremi')
+            return redirect('dashboard_sobremi')
         else:
             for error_message in validation_result['errors']:
                 messages.error(request, error_message)
@@ -43,9 +42,9 @@ def stanleySobremi(request):
 # FIN SOBRE MI
 
 @login_required
-def perfilEditar(request):
+def editar_perfil(request):
     if request.method == 'POST':
-        persona = stanley.objects.get(id_persona=request.session['id_persona'])
+        persona = Stanley.objects.get(id_persona=request.session['id_persona'])
         ruta_imagen_actual = persona.perfil.path if persona.perfil else None
 
         imagen_perfil = request.FILES.get('imagen')
@@ -56,20 +55,25 @@ def perfilEditar(request):
             persona.perfil = imagen_perfil
 
         persona.nombre_usuario = request.POST.get('nombre_usuario')
-        persona.password = request.POST.get('password')
+        nueva_password = request.POST.get('password')
+        
+        if nueva_password:
+            persona.password = nueva_password
+
         persona.save()
         messages.success(request, 'Perfil actualizado correctamente.')
-        return redirect('perfilEditar') 
+        return redirect('editar_perfil') 
 
-    persona = stanley.objects.get(id_persona=request.session['id_persona'])
+    persona = Stanley.objects.get(id_persona=request.session['id_persona'])
     context = {"titulo": "Actualizar Perfil", "persona": persona, }
     return render(request, 'auth/dashboard/perfil/editar.html', context)
 
 
+
 @login_required
-def agregarContacto(request):
+def agregar_contacto(request):
     if request.method == 'POST':
-        persona = stanley.objects.get(id_persona=request.session['id_persona'])
+        persona = Stanley.objects.get(id_persona=request.session['id_persona'])
 
         redes_sociales = [
             ('facebook', request.POST.get('redes_facebook')),
@@ -89,7 +93,7 @@ def agregarContacto(request):
 
         for nombre, url in redes_sociales:
             if url is not None and url.strip() != '':
-                red_social, created = RedSocial.objects.get_or_create(nombre=nombre)
+                red_social, _ = RedSocial.objects.get_or_create(nombre=nombre)
                 red_social.url = url
                 red_social.save()
                 persona.redes_sociales.add(red_social)
@@ -102,9 +106,8 @@ def agregarContacto(request):
 
         persona.save()
         messages.success(request, 'Redes sociales actualizadas correctamente.')
-        return redirect('/stanley/contacto')
-
-    persona = stanley.objects.get(id_persona=request.session['id_persona'])
+        return redirect('/dashboard/contacto')
+    
     redes_sociales = RedSocial.objects.all()
 
     redes_sociales_data = {rs.nombre: rs.url for rs in redes_sociales}
@@ -116,7 +119,7 @@ def agregarContacto(request):
 
 # APTITUDES
 @login_required
-def agregarAptitud(request):
+def agregar_aptitud(request):
     if request.method == 'POST':
         nombre = request.POST.get('nombre')
         if nombre:
@@ -129,7 +132,7 @@ def agregarAptitud(request):
                 messages.error(request, 'Ya existe una aptitud con ese nombre.')
         else:
             messages.error(request, 'El campo de nombre es obligatorio.')
-        return redirect('/stanley/aptitud')
+        return redirect('/dashboard/aptitud')
     else:
         aptitudes = Aptitude.objects.all()
         context = {"titulo": "Agregar Aptitud", "aptitudes": aptitudes}

@@ -8,7 +8,7 @@ class RedSocial(models.Model):
     url = models.URLField()
 class Estado(models.Model):
     id_estado =         models.AutoField(db_column='idEstado', primary_key=True)
-    nombre =            models.CharField(max_length=20, blank=False, null=False)
+    nombre =            models.CharField(max_length=20, blank=False,)
     def __str__(self):
         return str(self.nombre)
 
@@ -18,10 +18,10 @@ class Aptitude(models.Model):
     nombre = models.CharField(max_length=100)
     
     
-class stanley(models.Model):
+class Stanley(models.Model):
     id_persona = models.AutoField(primary_key=True)
     nombre_usuario = models.CharField(max_length=60)
-    perfil =   models.ImageField (upload_to='img', null=True, blank=True)
+    perfil =   models.ImageField (upload_to='img', null=True)
     redes_sociales = models.ManyToManyField(RedSocial)
     password = models.CharField(max_length=128)
    
@@ -36,12 +36,12 @@ class stanley(models.Model):
 class Portafolio(models.Model):
     id_portafolio =       models.AutoField(primary_key=True)
     titulo =            models.CharField(max_length=60)
-    imagen_portafolio =  models.ImageField (upload_to='img', null=True, blank=True)
+    imagen_portafolio =  models.ImageField (upload_to='img', null=True)
     descripcion =       models.CharField(max_length=210)
     aptitudes =         models.ManyToManyField(Aptitude)
-    enlaces_web =       models.URLField(null=True, blank=True)
-    enlaces_github =    models.URLField(null=True, blank=True)
-    id_estado = models.ForeignKey('Estado', on_delete=models.CASCADE, db_column='idEstado', null=True)
+    enlaces_web =       models.URLField(blank=True, default='')
+    enlaces_github =    models.URLField( blank=True, default='')
+    id_estado = models.ForeignKey('Estado', on_delete=models.CASCADE, db_column='idEstado', blank=True)
     
     
     def __str__(self):
@@ -49,7 +49,7 @@ class Portafolio(models.Model):
 
 class Sobremi(models.Model):
     id_sobremi = models.AutoField(primary_key=True)
-    descripcion_inicio = models.TextField(null=True, blank=True)
+    descripcion_inicio = models.TextField( blank=True)
     descripcion = models.TextField()
 
     def __str__(self):
@@ -60,7 +60,7 @@ class Certificado(models.Model):
     id_certificado = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=60)
     nombre_escuela = models.CharField(max_length=60)
-    imagen_certificado = models.ImageField(upload_to='img', null=True, blank=True) 
+    imagen_certificado = models.ImageField(upload_to='img', null=True) 
     enlaces_web = models.URLField()
     aptitudes = models.ManyToManyField(Aptitude) 
     def __str__(self):

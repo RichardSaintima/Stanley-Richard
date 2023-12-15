@@ -3,7 +3,6 @@
 
 .sobreMi {
     &__contenido {
-        // @include m.grid(1, 1rem);
         @include m.tablet {
             display: grid;
             grid-template-columns: 30% 70%;
@@ -15,7 +14,6 @@
                 source,img {
                     border-radius: 2rem;
                     max-width:100%;
-                    // height: none;
                 }
             }
         }

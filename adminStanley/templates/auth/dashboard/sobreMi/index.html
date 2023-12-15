@@ -10,6 +10,7 @@
     <form method="POST"  class="formulario">
         {% csrf_token %}
         <fieldset class="formulario__fieldset">
+            <legend class="formulario__legend">Resumen de Mi</legend>
             <div class="formulario__campo">
                 <label for="descripcion_inicio" class="formulario__label">Presentacion Inicio</label>
                 <textarea
@@ -23,6 +24,7 @@
         </fieldset>
 
         <fieldset class="formulario__fieldset">
+            <legend class="formulario__legend">Detalle Sobre Mi</legend>
             <div class="formulario__campo">
                 <label for="descripcion" class="formulario__label">Descripción Sobre mi</label>
                 <textarea

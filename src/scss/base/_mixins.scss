@@ -68,16 +68,16 @@
     margin: 2rem 0;
 }
 
-// @mixin heading($color: v.$blanco, $border-raduis:false, $backgr-color: none) {
-//     font-family: v.$fuente_principal;
-//     font-weight: $color;
-//     margin: 2rem 0;
-//     background-color: $backgr-color;
+@mixin heading-2($color: v.$blanco, $border-raduis:false, $backgr-color: none) {
+    font-family: v.$fuente_principal;
+    font-weight: $color;
+    margin: 2rem 0;
+    background-color: $backgr-color;
 
-//     @if $border-raduis {
-//         border-radius: 1rem
-//     }
-// }
+    @if $border-raduis {
+        border-radius: 1rem
+    }
+}
 
 @mixin nombre-pagina {
     @include heading;
@@ -120,7 +120,7 @@
             font-style: normal;
             text-rendering: auto;
             -webkit-font-smoothing: antialiased;
-            font-family: "Font Awesome 6 Brands";
+            font-family: "Font Awesome 6 Brands", sans-serif;
         }
 
         &[href*="facebook.com"]::before {

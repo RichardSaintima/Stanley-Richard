@@ -30,7 +30,7 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('', include('proyecto.urls')),
-    path('stanley/', include('adminStanley.urls')),
+    path('dashboard/', include('adminStanley.urls')),
 ] 
 handler404 = sorry
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,4 +1,4 @@
-from adminStanley.models.models import stanley
+from adminStanley.models.models import Stanley
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 
@@ -6,10 +6,10 @@ from django.contrib.auth.hashers import check_password
 
 def custom_authenticate(nombre_usuario, password):
     try:
-        persona = stanley.objects.get(nombre_usuario=nombre_usuario)
+        persona = Stanley.objects.get(nombre_usuario=nombre_usuario)
         if check_password(password, persona.password):
             return persona
-    except stanley.DoesNotExist:
+    except Stanley.DoesNotExist:
         pass
     return None
 

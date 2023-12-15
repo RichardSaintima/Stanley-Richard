@@ -1,8 +1,8 @@
 (function() {
-  var parrafos = document.querySelectorAll('.miParrafo');
+  let parrafos = document.querySelectorAll('.miParrafo');
 
   parrafos.forEach(function(parrafo) {
-      var boton = parrafo.nextElementSibling;
+      let boton = parrafo.nextElementSibling;
 
       boton.addEventListener('click', function() {
           parrafo.classList.toggle('completo');

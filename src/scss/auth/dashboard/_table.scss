@@ -5,6 +5,14 @@
     width: 100%;
     border-collapse: collapse;
 
+    &__caption {
+        font-size: 16px;
+        font-weight: normal; 
+        margin-bottom: 10px; 
+        color: v.$verde; 
+        text-transform: none; 
+        letter-spacing: normal;
+    }
     &__thead {
         background-color: v.$principal;
         color: v.$blanco;
@@ -36,29 +44,10 @@
         }
 
         &--aptitude {
-        //     position: relative;
             cursor: pointer;
             padding-left: 4rem;
             color: v.$principal;
             @include m.texto-fluido(1.3rem, 2rem);
-        //     &::before {
-        //         content: attr(title);
-        //         position: absolute;
-        //         background-color: v.$principal; /* Puedes personalizar el color de fondo según tu diseño */
-        //         color: v.$blanco; /* Personaliza el color del texto según tu diseño */
-        //         padding: 5px;
-        //         border-radius: 5px;
-        //         font-size: 14px;
-        //         white-space: nowrap;
-        //         display: none;
-        //         z-index: 1;
-        //         bottom: 100%; /* Muestra el tooltip encima de la celda */
-        //         left: 50%;
-        //         transform: translateX(-50%);
-        //     }
-        //     &:hover::before {
-        //         display: block;
-        //     }
         }
 
         &--acciones {

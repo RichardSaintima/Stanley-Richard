@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from adminStanley.models.models import Estado, Sobremi, stanley, Certificado, Aptitude, Portafolio
+from adminStanley.models.models import Estado, Sobremi, Stanley, Certificado, Aptitude, Portafolio
 from datetime import datetime
 from django.http import HttpResponse
 from django.core.mail import EmailMessage
@@ -10,8 +10,11 @@ from adminStanley.Authenticacion.custom_auth import custom_authenticate, custom_
 from proyecto.Authenticacion.custom_auth import check_session
 
 
+
+TEMPLATE_LOGIN =  'auth/session/login.html'
+
 def obtener_datos_generales():
-    persona = stanley.objects.first()
+    persona = Stanley.objects.first()
     redes_sociales = persona.redes_sociales.all()
     return persona, redes_sociales
 
@@ -60,8 +63,6 @@ def hobby(request, session):
 @check_session
 def portafolio(request, session):
     persona, redes_sociales = obtener_datos_generales()
-    estados = Estado.objects.all()
-
     portafolios_completados = Portafolio.objects.filter(id_estado__nombre="Completado")
     portafolios_pendientes = Portafolio.objects.filter(id_estado__nombre="Pendiente")
 
@@ -76,7 +77,7 @@ def portafolio(request, session):
     return render(request, 'pages/proyecto/portafollio-Index.html', context)
 
 @check_session
-def sobreMi(request, session):
+def sobre_mi(request, session):
     persona, redes_sociales = obtener_datos_generales()
     aptitudes = Aptitude.objects.all()
     sobremi = Sobremi.objects.first()
@@ -96,6 +97,7 @@ def sobreMi(request, session):
 
 # ADMIN  ES DECIR YO
 def login(request) :
+    context = {"titulo": "Iniciar Sesion"}
     if request.method == 'POST':
         nombre_usuario = request.POST['nombre_usuario']
         password = request.POST['password']
@@ -106,22 +108,18 @@ def login(request) :
             if persona is not None:
                 custom_login(request, persona)
                 if persona:
-                    return redirect('/stanley/')
+                    return redirect('/dashboard/')
                 else:
                     return redirect('/')
             else:
                 messages.error(request, 'Credenciales inválidas')
-                context = {"titulo": "Iniciar Sesion"}
-                return render(request, 'auth/session/login.html', context)
+                return render(request,TEMPLATE_LOGIN , context)
 
-        except stanley.DoesNotExist:
+        except Stanley.DoesNotExist:
             messages.error(request, 'Credenciales inválidas')
-            context = {"titulo": "Iniciar Sesion"}
-            return render(request, 'auth/session/login.html', context)
+            return render(request, TEMPLATE_LOGIN, context)
 
-
-    context = {"titulo": "Iniciar Sesion"}
-    return render(request, 'auth/session/login.html',context)
+    return render(request, TEMPLATE_LOGIN,context)
 
 
 
@@ -136,16 +134,7 @@ def enviar_mensaje(request):
         mensaje = request.POST.get('mensaje', '')
         asunto = request.POST.get('asunto', '')
 
-        errores = []
-
-        if not nombre:
-            errores.append('Por favor, ingresa tu nombre.')
-        if not email:
-            errores.append('Por favor, ingresa tu email.')
-        if not mensaje:
-            errores.append('Por favor, ingresa tu mensaje.')
-        if not asunto:
-            errores.append('Por favor, ingresa tu asunto.')
+        errores = validar_datos(nombre, email, mensaje, asunto)
 
         if errores:
             for error in errores:
@@ -173,12 +162,26 @@ def enviar_mensaje(request):
 
         return redirect('/#contacto')
 
+def validar_datos(nombre, email, mensaje, asunto):
+    errores = []
+
+    if not nombre:
+        errores.append('Por favor, ingresa tu nombre.')
+    if not email:
+        errores.append('Por favor, ingresa tu email.')
+    if not mensaje:
+        errores.append('Por favor, ingresa tu mensaje.')
+    if not asunto:
+        errores.append('Por favor, ingresa tu asunto.')
+
+    return errores
+
 def sorry(request, exception):
-    persona = stanley.objects.first()
+    persona = Stanley.objects.first()
     context = {
         "titulo": "404",
         "persona": persona,
     }
-
     return render(request, 'pages/404/404.html', context)
+
  

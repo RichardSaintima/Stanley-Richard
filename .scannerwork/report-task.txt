@@ -2,5 +2,5 @@ projectKey=PORTAFILO
 serverUrl=http://localhost:9000
 serverVersion=10.3.0.82913
 dashboardUrl=http://localhost:9000/dashboard?id=PORTAFILO
-ceTaskId=AYxR1tyHSAGkCm1z91Dr
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYxR1tyHSAGkCm1z91Dr
+ceTaskId=AYxq_ByjyRtV--u31Wum
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYxq_ByjyRtV--u31Wum

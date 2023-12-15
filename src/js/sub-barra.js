@@ -1,22 +1,22 @@
 (function() {
     document.addEventListener('scroll', function() {
-        var scrollPosition = window.scrollY;
+        let scrollPosition = window.scrollY;
 
-        var barraPrincipal = document.getElementById('nav');
-        var barraPortafolio = document.getElementById('nav-portafolio');
-        var barraSobreMi = document.getElementById('nav-sobremi');
-        var barraHobby = document.getElementById('nav-hobby');
-        var barraContacto = document.getElementById('nav-contacto');
-        var barraPrincipalHeight = barraPrincipal.offsetHeight;
+        let barraPrincipal = document.getElementById('nav');
+        let barraPortafolio = document.getElementById('nav-portafolio');
+        let barraSobreMi = document.getElementById('nav-sobremi');
+        let barraHobby = document.getElementById('nav-hobby');
+        let barraContacto = document.getElementById('nav-contacto');
+        let barraPrincipalHeight = barraPrincipal.offsetHeight;
 
-        var portafolioSection = document.getElementById('portafolio');
-        var sobreMiSection = document.getElementById('sobre-mi');
-        var hobbySection = document.getElementById('hobby');
-        var contactoSection = document.getElementById('contacto');
-        var portafolioSectionPosition = portafolioSection.offsetTop;
-        var sobreMiSectionPosition = sobreMiSection.offsetTop;
-        var hobbySectionPosition = hobbySection.offsetTop;
-        var contactoSectionPosition = contactoSection.offsetTop;
+        let portafolioSection = document.getElementById('portafolio');
+        let sobreMiSection = document.getElementById('sobre-mi');
+        let hobbySection = document.getElementById('hobby');
+        let contactoSection = document.getElementById('contacto');
+        let portafolioSectionPosition = portafolioSection.offsetTop;
+        let sobreMiSectionPosition = sobreMiSection.offsetTop;
+        let hobbySectionPosition = hobbySection.offsetTop;
+        let contactoSectionPosition = contactoSection.offsetTop;
 
         if (
             scrollPosition >= portafolioSectionPosition - barraPrincipalHeight &&

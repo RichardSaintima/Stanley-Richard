@@ -2,7 +2,7 @@
 {% load static %} 
 {% block content%}
 <div class="dashboard__contenedor-boton">
-    <a class="dashboard__boton" href="/stanley/certificado/agregar">
+    <a class="dashboard__boton" href="/certificado/agregar">
         <i class="fa-solid fa-circle-plus"></i>
         Añadir Certificado
     </a>
@@ -50,11 +50,11 @@
                             <i class="fa-solid fa-link"></i>
                         </td>
                         <td class="table__td--acciones">
-                            <a class="table__accion table__accion--editar" href="{% url 'editarCertificado' pk=certificado.id_certificado %}">
+                            <a class="table__accion table__accion--editar" href="{% url 'editar_certificado' pk=certificado.id_certificado %}">
                                 <i class="fa-solid fa-pencil"></i>
                                 Editar
                             </a>
-                            <form class="table__formulario" method="POST" action="{% url 'eliminarCertificado' pk=certificado.id_certificado %}">
+                            <form class="table__formulario" method="POST" action="{% url 'eliminar_certificado' pk=certificado.id_certificado %}">
                                 {% csrf_token %}
                                 <input type="hidden" name="eliminar" value="Eliminar Certificado">
                                 <button type="submit" class="table__accion table__accion--eliminar">
