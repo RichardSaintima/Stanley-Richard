@@ -25,10 +25,10 @@
                     </ul>
                     <button class="proyecto__finalizado--tipo__ver">
                         {% if portafolio.enlaces_web %}
-                            <a href="{{ portafolio.enlaces_web }}">Ver Pagina</a>
+                            <a href="{{ portafolio.enlaces_web }}" target="_blank">Ver Pagina</a>
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         {% elif portafolio.enlaces_github %}                
-                            <a href="{{ portafolio.enlaces_web }}">Mostrar Github</a>
+                            <a href="{{ portafolio.enlaces_web }}" target="_blank">Mostrar Github</a>
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         {% endif %}                                
                     </button>
